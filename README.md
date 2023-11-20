@@ -1,6 +1,16 @@
 # project-l05gr06
-project-l05gr06 created by GitHub Classroom
+
+This project was developed by ...
+
 
 ### Space Invaders
 
-Space Invaders is a classic arcade-style shooting game where players take control of a spaceship to defend Earth from waves of alien invaders. The objective is simple: eliminate the advancing aliens while avoiding their counterattacks. Blast your way through the extraterrestrial threat, rack up points, and see how long you can survive in this timeless arcade experience.
+Space Invaders is a fixed shooter in which the player moves a laser cannon horizontally across the bottom of the screen and fires at aliens overhead. The aliens begin as five rows of eleven that move left and right as a group, shifting downward each time they reach a screen edge.
+
+### CONTROLS:
+
+#### - MOVEMENT
+
+#### - OTHERS
+
+### SELF-EVALUATION
