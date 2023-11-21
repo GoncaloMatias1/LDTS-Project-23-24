@@ -12,7 +12,6 @@ import com.googlecode.lanterna.terminal.Terminal;
 public class Main {
 
     public static void main(String[] args) {
-        // Create a terminal and screen to display the menu
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
         Screen screen = null;
 
@@ -23,50 +22,91 @@ public class Main {
             screen.setCursorPosition(null); // we don't need a cursor
             TextGraphics graphics = screen.newTextGraphics();
 
-            // Calculate the center position based on the terminal size
             int width = screen.getTerminalSize().getColumns();
             int height = screen.getTerminalSize().getRows();
 
-            // Instantiate MainMenuView with the terminal's size
             MainMenu mainMenu = new MainMenu(width, height);
-            PlayerShip playerShip = new PlayerShip(width / 2, height - 5);  //inicia o player
+            PlayerShip playerShip = new PlayerShip(width / 2, height - 5);
 
-            // Main loop to update and redraw the screen
             boolean running = true;
-            while (running) {
-                // Draw the menu
-                mainMenu.draw(graphics);
-                screen.refresh();
-                playerShip.draw(graphics);
+            boolean inMainMenu = true;
+            boolean inGame = false;
 
-                // Handle key input for navigation
-                KeyStroke keyStroke = screen.pollInput();
+            KeyStroke keyStroke = null;
+
+            while (running) {
+                // Clear previous frame
+                screen.clear();
+
+                if (inMainMenu) {
+                    mainMenu.draw(graphics);
+                } else if (inGame) {
+                    playerShip.draw(graphics);
+                    // TODO: Add game logic and drawing here
+                }
+
+                screen.refresh();
+
+                if (inMainMenu) {
+                    keyStroke = screen.readInput();
+                } else if (inGame) {
+                    keyStroke = screen.pollInput();
+                    // Handle game input here
+                    // TODO: Implement game input handling
+                }
+
                 if (keyStroke != null) {
-                    if (keyStroke.getKeyType() == KeyType.ArrowUp) {
-                        mainMenu.update(-1); // Move selection up
-                    } if (keyStroke.getKeyType() == KeyType.ArrowLeft) {
-                        playerShip.moveLeft();
-                    } else if (keyStroke.getKeyType() == KeyType.ArrowRight) {
-                        playerShip.moveRight();
-                    } else if (keyStroke.getKeyType() == KeyType.ArrowDown) {
-                        mainMenu.update(1); // Move selection down
-                    } else if (keyStroke.getKeyType() == KeyType.Enter) {
-                        // Execute the selected option
-                        // Placeholder for action based on selected item
-                        System.out.println("Selected: " + mainMenu.getSelectedItem());
-                        // Add logic here for what happens when an item is selected
-                    } else if (keyStroke.getKeyType() == KeyType.Escape) {
-                        running = false; // Exit on ESC
+                    if (keyStroke.getKeyType() == KeyType.Escape) {
+                        running = false;
+                    }
+
+                    if (inMainMenu) {
+                        if (keyStroke.getKeyType() == KeyType.ArrowUp) {
+                            mainMenu.update(-1);
+                        } else if (keyStroke.getKeyType() == KeyType.ArrowDown) {
+                            mainMenu.update(1);
+                        } else if (keyStroke.getKeyType() == KeyType.Enter) {
+                            String selectedItem = mainMenu.getSelectedItem();
+                            System.out.println("Selected: " + selectedItem);
+                            switch (selectedItem) {
+                                case "PLAY":
+                                    inMainMenu = false;
+                                    inGame = true;
+                                    break;
+                                case "CONTROLS":
+                                    // Implement control view logic
+                                    break;
+                                case "QUIT":
+                                    running = false;
+                                    break;
+                            }
+                        }
+                    } else if (inGame) {
+                        // Game controls
+                        if (keyStroke.getKeyType() == KeyType.ArrowLeft) {
+                            playerShip.moveLeft();
+                        } else if (keyStroke.getKeyType() == KeyType.ArrowRight) {
+                            playerShip.moveRight();
+                        }
+                        // Add other controls like shooting, pausing, etc.
+                    }
+                }
+
+                // Sleep to control the frame rate in the game loop
+                if (inGame) {
+                    try {
+                        Thread.sleep(16); // Sleep for 16 ms for approximately 60 FPS
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            // Cleanup the screen and terminal
             if (screen != null) {
                 try {
-                    screen.stopScreen();
+                    screen.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -74,4 +114,3 @@ public class Main {
         }
     }
 }
-
