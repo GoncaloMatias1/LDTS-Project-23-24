@@ -1,19 +1,71 @@
 package com.goncalomatias1.l05gr06;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import View.MainMenu;
+import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
+import com.googlecode.lanterna.screen.Screen;
+import com.googlecode.lanterna.screen.TerminalScreen;
+import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import com.googlecode.lanterna.terminal.Terminal;
+
 public class Main {
+
     public static void main(String[] args) {
-        // Press Opt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        // Create a terminal and screen to display the menu
+        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
+        Screen screen = null;
 
-        // Press Ctrl+R or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        try {
+            Terminal terminal = terminalFactory.createTerminal();
+            screen = new TerminalScreen(terminal);
+            screen.startScreen();
+            screen.setCursorPosition(null); // we don't need a cursor
+            TextGraphics graphics = screen.newTextGraphics();
 
-            // Press Ctrl+D to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Cmd+F8.
-            System.out.println("i = " + i);
+            // Calculate the center position based on the terminal size
+            int width = screen.getTerminalSize().getColumns();
+            int height = screen.getTerminalSize().getRows();
+
+            // Instantiate MainMenuView with the terminal's size
+            MainMenu mainMenu = new MainMenu(width, height);
+
+            // Main loop to update and redraw the screen
+            boolean running = true;
+            while (running) {
+                // Draw the menu
+                mainMenu.draw(graphics);
+                screen.refresh();
+
+                // Handle key input for navigation
+                KeyStroke keyStroke = screen.pollInput();
+                if (keyStroke != null) {
+                    if (keyStroke.getKeyType() == KeyType.ArrowUp) {
+                        mainMenu.update(-1); // Move selection up
+                    } else if (keyStroke.getKeyType() == KeyType.ArrowDown) {
+                        mainMenu.update(1); // Move selection down
+                    } else if (keyStroke.getKeyType() == KeyType.Enter) {
+                        // Execute the selected option
+                        // Placeholder for action based on selected item
+                        System.out.println("Selected: " + mainMenu.getSelectedItem());
+                        // Add logic here for what happens when an item is selected
+                    } else if (keyStroke.getKeyType() == KeyType.Escape) {
+                        running = false; // Exit on ESC
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Cleanup the screen and terminal
+            if (screen != null) {
+                try {
+                    screen.stopScreen();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }
+
