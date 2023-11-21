@@ -29,6 +29,7 @@ public class Main {
 
             // Instantiate MainMenuView with the terminal's size
             MainMenu mainMenu = new MainMenu(width, height);
+            PlayerShip playerShip = new PlayerShip(width / 2, height - 5);  //inicia o player
 
             // Main loop to update and redraw the screen
             boolean running = true;
@@ -36,12 +37,17 @@ public class Main {
                 // Draw the menu
                 mainMenu.draw(graphics);
                 screen.refresh();
+                playerShip.draw(graphics);
 
                 // Handle key input for navigation
                 KeyStroke keyStroke = screen.pollInput();
                 if (keyStroke != null) {
                     if (keyStroke.getKeyType() == KeyType.ArrowUp) {
                         mainMenu.update(-1); // Move selection up
+                    } if (keyStroke.getKeyType() == KeyType.ArrowLeft) {
+                        playerShip.moveLeft();
+                    } else if (keyStroke.getKeyType() == KeyType.ArrowRight) {
+                        playerShip.moveRight();
                     } else if (keyStroke.getKeyType() == KeyType.ArrowDown) {
                         mainMenu.update(1); // Move selection down
                     } else if (keyStroke.getKeyType() == KeyType.Enter) {
