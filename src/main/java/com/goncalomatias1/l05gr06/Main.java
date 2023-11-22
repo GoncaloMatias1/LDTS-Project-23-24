@@ -1,6 +1,7 @@
 package com.goncalomatias1.l05gr06;
 
 import View.MainMenu;
+import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
@@ -12,7 +13,8 @@ import com.googlecode.lanterna.terminal.Terminal;
 public class Main {
 
     public static void main(String[] args) {
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory();
+        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(100, 30));
+
         Screen screen = null;
 
         try {

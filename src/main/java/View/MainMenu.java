@@ -21,9 +21,25 @@ public class MainMenu extends DefaultMenu {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
 
-        graphics.enableModifiers(SGR.BOLD);
-        graphics.putString(new TerminalPosition(width / 2 - "SPACE INVADERS".length() / 2, height / 3), "SPACE INVADERS", SGR.BLINK);
+        // ASCII Art for "Space Invaders" - this is a placeholder, replace with your ASCII art
+        String titleArt =
+                        "      _____                               _____                        _                      \n" +
+                        "     /  ___|                             |_   _|                      | |                     \n" +
+                        "    | (___  _ __   __ _  ___   ___         | |  _ _ __    __ __ _   __| |  ___  _ __  ___     \n" +
+                        " \\___ \\| '_ \\ / _` |/ __\\ / _ \\        | | | '_ \\ \\  / // _` | / _` | / _ \\| '__|/ __|\n" +
+                        "   ____) | |_) | (_| | |__ |  __/       _| |_| | | \\ \\/ /| (_| || (_| ||  __/| |   \\__ \\  \n" +
+                        "|_____/| .__/ \\__,_|\\___/ \\___|      |_____|_| |_|\\__/  \\__,_| \\__,_| \\___||_|   |___/ \n" +
+                        "           | |                                                                                \n" +
+                        "           |_|                                                                                \n";
 
+        // Split the ASCII art into lines
+        String[] lines = titleArt.split("\n");
+        int startY = 2; // Start Y position for the title
+
+        // Draw each line of the ASCII art
+        for (int i = 0; i < lines.length; i++) {
+            graphics.putString(width / 2 - lines[i].length() / 2, startY + i, lines[i]);
+        }
         for (int i = 0; i < menuItems.length; i++) {
             if (i == selectedItem) {
                 graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF00")); // Yellow for selected
