@@ -1,7 +1,6 @@
 package Model;
 
 import View.MainMenu;
-import com.goncalomatias1.l05gr06.PlayerShip;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
@@ -12,97 +11,81 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
 public class Game {
-    public void run() {
+    private Screen screen;
+    private Model.Arena arena;
+    private MainMenu mainMenu;
+
+    public Game() {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
                 .setInitialTerminalSize(new TerminalSize(100, 30));
-
-        Screen screen = null;
 
         try {
             Terminal terminal = terminalFactory.createTerminal();
             screen = new TerminalScreen(terminal);
             screen.startScreen();
             screen.setCursorPosition(null); // we don't need a cursor
-            TextGraphics graphics = screen.newTextGraphics();
 
             int width = screen.getTerminalSize().getColumns();
             int height = screen.getTerminalSize().getRows();
 
-            MainMenu mainMenu = new MainMenu(width, height);
-            PlayerShip playerShip = new PlayerShip(width / 2, height - 5);
+            arena = new Model.Arena(width, height);
+            mainMenu = new MainMenu(width, height);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void run() {
+        try {
             boolean running = true;
             boolean inMainMenu = true;
             boolean inGame = false;
 
-            KeyStroke keyStroke = null;
+            KeyStroke keyStroke;
+            TextGraphics graphics = screen.newTextGraphics();
 
             while (running) {
-                // Clear previous frame
                 screen.clear();
 
                 if (inMainMenu) {
                     mainMenu.draw(graphics);
-                } else if (inGame) {
-                    playerShip.draw(graphics);
-                    // TODO: Add game logic and drawing here
-                }
-
-                screen.refresh();
-
-                if (inMainMenu) {
-                    keyStroke = screen.readInput();
-                } else if (inGame) {
+                    // Use pollInput for non-blocking input reading
                     keyStroke = screen.pollInput();
-                    // Handle game input here
-                    // TODO: Implement game input handling
-                }
 
-                if (keyStroke != null) {
-                    if (keyStroke.getKeyType() == KeyType.Escape) {
-                        running = false;
-                    }
-
-                    if (inMainMenu) {
-                        if (keyStroke.getKeyType() == KeyType.ArrowUp) {
+                    if (keyStroke != null) {
+                        if (keyStroke.getKeyType() == KeyType.Enter) {
+                            String selectedItem = mainMenu.getSelectedItem();
+                            if ("PLAY".equals(selectedItem)) {
+                                inMainMenu = false;
+                                inGame = true;
+                            } else if ("CONTROLS".equals(selectedItem)) {
+                                // Implement control view logic
+                            } else if ("QUIT".equals(selectedItem)) {
+                                running = false;
+                            }
+                        } else if (keyStroke.getKeyType() == KeyType.ArrowUp) {
                             mainMenu.update(-1);
                         } else if (keyStroke.getKeyType() == KeyType.ArrowDown) {
                             mainMenu.update(1);
-                        } else if (keyStroke.getKeyType() == KeyType.Enter) {
-                            String selectedItem = mainMenu.getSelectedItem();
-                            System.out.println("Selected: " + selectedItem);
-                            switch (selectedItem) {
-                                case "PLAY":
-                                    inMainMenu = false;
-                                    inGame = true;
-                                    break;
-                                case "CONTROLS":
-                                    // Implement control view logic
-                                    break;
-                                case "QUIT":
-                                    running = false;
-                                    break;
-                            }
                         }
-                    } else if (inGame) {
-                        // Game controls
-                        if (keyStroke.getKeyType() == KeyType.ArrowLeft) {
-                            playerShip.moveLeft();
-                        } else if (keyStroke.getKeyType() == KeyType.ArrowRight) {
-                            playerShip.moveRight();
+                    }
+                } else if (inGame) {
+                    arena.draw(graphics); // Delegate drawing to the Arena class
+                    arena.update(); // Update the game state through Arena
+                    keyStroke = screen.pollInput(); // Non-blocking input polling
+                    if (keyStroke != null) {
+                        if (keyStroke.getKeyType() == KeyType.Escape) {
+                            inGame = false;
+                            inMainMenu = true;
+                        } else {
+                            arena.handleInput(keyStroke); // Delegate input handling to the Arena class
                         }
-                        // Add other controls like shooting, pausing, etc.
                     }
                 }
 
+                screen.refresh();
                 // Sleep to control the frame rate in the game loop
-                if (inGame) {
-                    try {
-                        Thread.sleep(16); // Sleep for 16 ms for approximately 60 FPS
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
+                Thread.sleep(16); // Sleep for 16 ms to approximate 60 FPS
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -117,4 +100,3 @@ public class Game {
         }
     }
 }
-
