@@ -22,7 +22,7 @@ public class Arena {
     public void draw(TextGraphics graphics) {
         graphics.setForegroundColor(TextColor.ANSI.YELLOW);
 
-        // Draw the borders
+        // desenhar limites
         for (int x = 0; x < width; x++) {
             graphics.setCharacter(x, 0, Symbols.DOUBLE_LINE_HORIZONTAL);
             graphics.setCharacter(x, height - 1, Symbols.DOUBLE_LINE_HORIZONTAL);
@@ -44,7 +44,6 @@ public class Arena {
     }
 
     public void update() {
-        // Update the game state (e.g., move objects, handle collisions)
     }
 
     public void handleInput(KeyStroke keyStroke) {
@@ -54,8 +53,6 @@ public class Arena {
         } else if (keyStroke.getKeyType() == KeyType.ArrowRight) {
             playerShip.moveRight();
         }
-        // Add other key handling for up/down or other actions
     }
 
-    // Add getters and setters as needed
 }
