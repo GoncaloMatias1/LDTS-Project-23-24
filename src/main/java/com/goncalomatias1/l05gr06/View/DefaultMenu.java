@@ -1,6 +1,6 @@
-package View;
+package com.goncalomatias1.l05gr06.View;
 
-import com.goncalomatias1.l05gr06.Position;
+import com.goncalomatias1.l05gr06.Objects.Characteristics.Position;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public abstract class DefaultMenu {

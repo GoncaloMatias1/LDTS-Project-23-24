@@ -1,7 +1,6 @@
-package View;
+package com.goncalomatias1.l05gr06.View;
 
-import com.goncalomatias1.l05gr06.Position;
-import com.googlecode.lanterna.SGR;
+import com.goncalomatias1.l05gr06.Objects.Characteristics.Position;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;

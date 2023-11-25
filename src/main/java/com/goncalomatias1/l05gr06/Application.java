@@ -1,6 +1,7 @@
 package com.goncalomatias1.l05gr06;
 
-import View.MainMenu;
+import com.goncalomatias1.l05gr06.Objects.PlayerShip;
+import com.goncalomatias1.l05gr06.View.MainMenu;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
@@ -10,7 +11,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
-public class Main {
+public class Application {
 
     public static void main(String[] args) {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(100, 30));

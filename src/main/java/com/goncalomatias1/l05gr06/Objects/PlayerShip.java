@@ -1,11 +1,12 @@
-package com.goncalomatias1.l05gr06;
+package com.goncalomatias1.l05gr06.Objects;
 
+import com.goncalomatias1.l05gr06.Objects.Characteristics.Position;
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-public class PlayerShip {
-    private Position position;
+public class PlayerShip extends Entity{
+    //TODO era uma classe sem super classe antes, por mudar para extender Entity direito
     private final TextCharacter shipCharacter;
 
     public PlayerShip(int startX, int startY) {
