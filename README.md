@@ -4,6 +4,11 @@
 
 This project was developed by Gonçalo Barroso (up202207832@fe.up.pt), Gonçalo Matias (up202108703@fe.up.pt), and Rodrigo Arteiro (up202108749@fe.up.pt) for LDTS 2023⁄24.
 
+### IMPLEMENTED FEATURES
+
+Currently in our code we have two structures, an old one with some implementation and a new one that uses all the design patters chosen. Some code in the old structure is yet to be implemented in the new one so when running it, it's just a black screen.
+In the old version some of the features already work but are not in the design patterns that we want.
+
 ### PLANNED FEATURES
 
 - **Game Over** - The Game Over screen will only appear when the aliens reach the end or the player reach 0 lives
