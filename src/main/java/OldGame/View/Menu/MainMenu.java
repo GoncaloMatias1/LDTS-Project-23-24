@@ -1,4 +1,4 @@
-/* package OldGame.View.Menu;
+package OldGame.View.Menu;
 
 import OldGame.View.DefaultMenu;
 import OldGame.Objects.Characteristics.Position;
@@ -72,4 +72,3 @@ public class MainMenu extends DefaultMenu {
 }
 
 
-/*
