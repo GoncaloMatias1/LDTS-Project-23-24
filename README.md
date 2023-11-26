@@ -6,9 +6,9 @@ This project was developed by Gonçalo Barroso (up202207832@fe.up.pt), Gonçalo 
 
 ### PLANNED FEATURES
 
--**Game Over**- The Game Over screen will only appear when the aliens reach the end or the player reach 0 lives
--**Lives Display**- The amount of lives will be displayed on the bottom corner of the screen
--**Moving** - The player will be able to move their character left or right. And monsters will move too.
+- **Game Over** - The Game Over screen will only appear when the aliens reach the end or the player reach 0 lives
+- **Lives Display** - The amount of lives will be displayed on the bottom corner of the screen
+- **Moving** - The player will be able to move their character left or right. And monsters will move too.
 - **Shooting** - The player character will shoot a projectile when the spacebar  is pressed. Similar to the player, the enemies will shoot in time intervals.
 - **Bullet Collision** - When a bullet hits an enemy, the bullet will disappear and the enemy will take damage and vice-versa for the player. If the player bullet hits an enemy bullet, both will disappear.
 
