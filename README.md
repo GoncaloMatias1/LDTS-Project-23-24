@@ -2,10 +2,6 @@
 
 Developed by Gonçalo Barroso (up202207832@fe.up.pt), Gonçalo Matias (up202108703@fe.up.pt), and Rodrigo Arteiro (up202108749@fe.up.pt), this project is an engaging reimagining of the classic Space Invaders game. The player maneuvers a laser cannon across the screen's bottom, aiming and firing at overhead aliens. These aliens, arranged in five rows of eleven, shift left and right in unison, moving down each time they reach the screen's edge.
 
-### Mockup of the Game in Arena
-
-![](resources/Mockup1.png)
-
 ### Current Implementation
 
 Our current codebase consists of two structures: an older version with partial implementation and a new version employing our chosen design patterns. Some features from the old structure are yet to be integrated into the new one. Consequently, the new version currently displays only a black screen. The older version, although not aligned with our design goals, already has some functioning features.
@@ -17,6 +13,10 @@ Our current codebase consists of two structures: an older version with partial i
 - **Shooting Mechanism:** Players shoot projectiles using the spacebar, while enemies fire at set intervals.
 - **Bullet Collision:** Projectiles will disappear upon hitting an enemy or another bullet, with corresponding damage to the targets.
 - **Lives Display:** Player's remaining lives shown in the screen's bottom left corner.
+
+### Mockup of the Game in Arena
+
+![](resources/Mockup1.png)
 
 ### Design Overview
 
