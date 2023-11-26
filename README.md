@@ -1,77 +1,49 @@
-## LDTS_T05G06 - Space Invaders
+## Space Invaders Project - LDTS 2023/24
 
-> Space Invaders is a fixed shooter in which the player moves a laser cannon horizontally across the bottom of the screen and fires at aliens overhead. The aliens begin as five rows of eleven that move left and right as a group, shifting downward each time they reach a screen edge.
+Developed by Gonçalo Barroso (up202207832@fe.up.pt), Gonçalo Matias (up202108703@fe.up.pt), and Rodrigo Arteiro (up202108749@fe.up.pt), this project is an engaging reimagining of the classic Space Invaders game. The player maneuvers a laser cannon across the screen's bottom, aiming and firing at overhead aliens. These aliens, arranged in five rows of eleven, shift left and right in unison, moving down each time they reach the screen's edge.
 
-This project was developed by Gonçalo Barroso (up202207832@fe.up.pt), Gonçalo Matias (up202108703@fe.up.pt), and Rodrigo Arteiro (up202108749@fe.up.pt) for LDTS 2023⁄24.
+### Current Implementation
 
-### IMPLEMENTED FEATURES
+Our current codebase consists of two structures: an older version with partial implementation and a new version employing our chosen design patterns. Some features from the old structure are yet to be integrated into the new one. Consequently, the new version currently displays only a black screen. The older version, although not aligned with our design goals, already has some functioning features.
 
-Currently in our code we have two structures, an old one with some implementation and a new one that uses all the design patters chosen. Some code in the old structure is yet to be implemented in the new one so when running it, it's just a black screen.
-In the old version some of the features already work but are not in the design patterns that we want.
+### Upcoming Features
 
-### PLANNED FEATURES
+- **Game Over Screen:** Triggered when aliens reach the bottom or the player loses all lives.
+- **Lives Display:** Player's remaining lives shown in the screen's bottom corner.
+- **Movement Mechanics:** Players can move their character left or right, and aliens will move accordingly.
+- **Shooting Mechanism:** Players shoot projectiles using the spacebar, while enemies fire at set intervals.
+- **Bullet Collision:** Projectiles will disappear upon hitting an enemy or another bullet, with corresponding damage to the targets.
 
-- **Game Over** - The Game Over screen will only appear when the aliens reach the end or the player reach 0 lives
-- **Lives Display** - The amount of lives will be displayed on the bottom corner of the screen
-- **Moving** - The player will be able to move their character left or right. And monsters will move too.
-- **Shooting** - The player character will shoot a projectile when the spacebar  is pressed. Similar to the player, the enemies will shoot in time intervals.
-- **Bullet Collision** - When a bullet hits an enemy, the bullet will disappear and the enemy will take damage and vice-versa for the player. If the player bullet hits an enemy bullet, both will disappear.
-
-### DESIGN
+### Design Overview
 
 #### Structure
 
-**Problem in Context**
+**Context:** A cohesive game structure was required.
 
-A structure for the game needed to be defined.
+**Solution:** Implementation of the **Model-View-Controller (MVC)** pattern to segregate interfaces, controls, and computational methods into distinct classes.
 
-**The Pattern**
+**Benefits:**
+- Streamlined, less complex individual classes.
+- Simplified integration of future enhancements.
 
-We have applied the **MVC** pattern. For each concern, the interface, the controls and the calculation methods are all in different classes.
+#### State Management
 
-**Consequences**
+**Context:** The game transitions through various states like Main Menu, Arena, Game Over, and Controls screen.
 
-The use of the MVC Pattern in the current design allows the following benefits:
+**Solution:** Adoption of the **State** pattern, allowing the Application class to reference only the superclass of each state.
 
-Less convoluted individual classes
-Easier future implementation of new methods, knowing which is needed for each
+**Benefits:**
+- Facilitates the addition of new states.
+- Reduces redundant code.
 
+#### Entity Management
 
-#### State
+**Context:** Various game entities share common methods.
 
-**Problem in Context**
+**Solution:** Utilization of the **Factory** pattern, enabling subclasses to inherit common methods without reimplementation.
 
-While the game is running, there are different states that it will go through, these being the Main Menu, the Arena, the Game Over screen and the Controls screen. We need a way to manage which one can get to each and what is shown on screen at each time.
+**Implementation Goal:** To create subclasses for Monster, PlayerShip, and Bullet under the Entity class.
 
-**The Pattern**
-
-We have applied the **State** pattern. Like this, the Application class doesn’t have to have each state class's implementation and only its superclass as a reference.
-
-**Consequences**
-
-The use of the State Pattern allows the following benefits:
-
-It’s easier to add future possible States
-There will be less repeated code
-
-#### Entities
-
-**Problem in Context**
-
-Different Entities in-game have very similar methods related to all of them. We had to use a way to avoid using too much repeating code and having to only write these common equal methods once.
-
-**The Pattern**
-
-We have applied the **Factory** pattern. Like this, every subclass that uses equal code doesn’t need to reimplement it and can simply be a subclass that implements only what's different
-
-**Implementation**
-
-Currently we aim to make the subclasses Monster, PlayerShip and Bullet of Entity
-
-**Consequences**
-
-The use of the Factory Method allows the following benefits:
-
-It’s easier to add future possible subclasses
-There will be less repeated code overall
-
+**Benefits:**
+- Streamlines the addition of new subclasses.
+- Minimizes overall code redundancy.
