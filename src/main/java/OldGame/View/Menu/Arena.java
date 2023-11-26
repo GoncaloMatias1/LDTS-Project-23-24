@@ -1,6 +1,6 @@
 package OldGame.View.Menu;
 
-import com.goncalomatias1.l05gr06.PlayerShip;
+import OldGame.Objects.PlayerShip;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.Symbols;
