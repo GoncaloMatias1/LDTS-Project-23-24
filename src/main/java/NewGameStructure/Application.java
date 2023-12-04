@@ -1,5 +1,6 @@
 package NewGameStructure;
 
+import NewGameStructure.GUI;
 import NewGameStructure.States.Menu.MainMenuState;
 import NewGameStructure.States.State;
 
@@ -8,17 +9,18 @@ import java.io.IOException;
 
 
 public class Application {
+    private GUI gui;
     private State state;
     public Application(){
-        state = new MainMenuState();
+        this.gui = new GUI();
+        this.state = new MainMenuState();
     }
     public static void main(String[] args) throws IOException {
-        // Call the run() method to start the game
-        Application.run();
+        new Application();
     }
 
     private static void run() throws IOException{
-        ScreenCreator.createScreen();
+
     }
 
     public State getState(){
