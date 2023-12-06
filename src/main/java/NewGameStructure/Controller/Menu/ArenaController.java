@@ -1,22 +1,25 @@
 package NewGameStructure.Controller.Menu;
 
 
+import NewGameStructure.Application;
+import NewGameStructure.Controller.Controller;
+import NewGameStructure.GUI;
 import NewGameStructure.Model.Menu.ArenaModel;
+import NewGameStructure.Model.Menu.MainMenuModel;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 
-public class ArenaController {
-    private ArenaModel model;
-
-    public ArenaController(ArenaModel model) {
-        this.model = model;
+public class ArenaController extends Controller<ArenaModel> {
+    public ArenaController(ArenaModel arenaModel){
+        super(arenaModel);
     }
-
-    public void handleInput(KeyStroke keyStroke) {
-        if (keyStroke.getKeyType() == KeyType.ArrowLeft) {
-            model.movePlayerShipLeft();
-        } else if (keyStroke.getKeyType() == KeyType.ArrowRight) {
-            model.movePlayerShipRight();
+    @Override
+    public void step(Application application, GUI.ACTION action){
+        switch (action){
+            case RIGHT:
+                getModel().movePlayerShipRight();
+            case LEFT:
+                getModel().movePlayerShipLeft();
         }
     }
 }
