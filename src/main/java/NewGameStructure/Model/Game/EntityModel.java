@@ -15,8 +15,6 @@ public abstract class EntityModel {
         this.isEnemy = isEnemy;
     }
 
-    public abstract void draw(TextGraphics graphics);
-
     public Position getPosition() {
         return position;
     }

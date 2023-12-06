@@ -11,17 +11,19 @@ import java.io.IOException;
 
 public class Application {
     private GUI gui;
-    private State state;
+    private static State state;
     public Application(){
         this.gui = new GUI();
         this.state = new MainMenuState(new MainMenuModel());
     }
     public static void main(String[] args) throws IOException {
-        new Application();
+        new Application().run();
     }
 
     private static void run() throws IOException{
+        while (state!=null){
 
+        }
     }
     public void setState(State state) {
         this.state = state;

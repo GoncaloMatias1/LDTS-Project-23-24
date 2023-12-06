@@ -19,7 +19,6 @@ public class PlayerShip extends EntityModel {
         this.maxX = screenWidth - 2; // Adjusted for 1 character thick border
     }
 
-    @Override
     public void draw(TextGraphics graphics) {
         graphics.setCharacter(getPosition().getX(), getPosition().getY(), shipCharacter);
     }
