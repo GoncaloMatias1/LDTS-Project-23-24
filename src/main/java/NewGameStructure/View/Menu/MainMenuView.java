@@ -55,6 +55,7 @@ public class MainMenuView extends View<MainMenuModel> {
             // Draw the selector
             graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF00")); // Yellow color for selector
             graphics.putString(new TerminalPosition(getModel().getSelectorPos().getX(), getModel().getSelectorPos().getY()), ">>");
+            getModel().getSelectorPos().setY(height / 2 + getModel().getSelectedItem() * 2);
         } catch (Exception e) {
             e.printStackTrace();
         }

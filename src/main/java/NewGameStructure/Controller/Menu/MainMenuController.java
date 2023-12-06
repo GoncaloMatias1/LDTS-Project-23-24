@@ -14,10 +14,10 @@ public class MainMenuController extends Controller<MainMenuModel> {
     public void step(Application application, GUI.ACTION action){
         switch(action){
             case UP:
-
+                getModel().removeEntry();
                 break;
             case DOWN:
-
+                getModel().addEntry();
                 break;
             case ENTER:
 

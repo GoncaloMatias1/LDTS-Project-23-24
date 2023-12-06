@@ -16,6 +16,15 @@ public class MainMenuModel {
     public int getSelectedItem(){
         return selectedItem;
     }
+    public void addEntry(){
+        selectedItem++;
+        if (selectedItem==3) selectedItem = 0;
+    }
+
+    public void removeEntry(){
+        selectedItem--;
+        if (selectedItem==-1) selectedItem = 2;
+    }
     public Position getSelectorPos(){
         return selectorPos;
     }
