@@ -12,7 +12,7 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 
-public class Game {
+public class  Game {
     private Screen screen;
     private Arena arena;
     private MainMenu mainMenu;

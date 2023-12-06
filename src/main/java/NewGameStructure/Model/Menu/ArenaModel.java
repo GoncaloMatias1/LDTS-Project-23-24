@@ -2,7 +2,6 @@ package NewGameStructure.Model.Menu;
 
 import NewGameStructure.Model.Game.Entities.Characteristics.Health;
 import NewGameStructure.Model.Game.Entities.PlayerShip;
-
 public class ArenaModel {
     private int width;
     private int height;

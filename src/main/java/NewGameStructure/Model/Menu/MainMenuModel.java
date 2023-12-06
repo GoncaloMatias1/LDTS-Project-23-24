@@ -1,13 +1,15 @@
 package NewGameStructure.Model.Menu;
 
-import OldGame.Objects.Characteristics.Position;
+import NewGameStructure.Position;
 
 public class MainMenuModel {
     private static final String[] menuItems = {"PLAY", "CONTROLS", "QUIT"};
-    protected Position selectorPos;
+    private Position selectorPos;
     private int selectedItem = 0;
 
-    public MainMenuModel(){};
+    public MainMenuModel(){
+        this.selectorPos = new Position(100 / 2 - 6, 30 / 2);
+    };
     public String[] getMenuItems(){
         return menuItems;
     }

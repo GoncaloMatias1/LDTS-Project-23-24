@@ -1,7 +1,7 @@
 package OldGame.View.Menu;
 
-import OldGame.View.DefaultMenu;
 import OldGame.Objects.Characteristics.Position;
+import OldGame.View.DefaultMenu;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;

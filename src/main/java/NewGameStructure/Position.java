@@ -1,8 +1,7 @@
-package NewGameStructure.Model.Game.Entities.Characteristics;
-
-
-public class  Position {
-    private int x,y;
+package NewGameStructure;
+public class Position {
+    private int x;
+    private int y;
 
     public Position(int x, int y) {
         this.x = x;
@@ -15,12 +14,11 @@ public class  Position {
     public int getX() {return x;}
     public int getY() {return y;}
 
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         else if (obj == null) return false;
         else if (getClass() != obj.getClass()) return false;
-        OldGame.Objects.Characteristics.Position p = (OldGame.Objects.Characteristics.Position) obj;
+        Position p = (Position) obj;
         return (x == p.getX() && y == p.getY());
     }
 }

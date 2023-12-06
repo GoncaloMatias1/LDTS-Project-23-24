@@ -1,5 +1,4 @@
 package NewGameStructure.Model.Game.Entities.Characteristics;
-
 public class Health {
     private int currentHealth;
     private int maxHealth;

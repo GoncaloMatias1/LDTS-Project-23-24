@@ -1,7 +1,7 @@
 package NewGameStructure.Controller.Game;
 
 
-import NewGameStructure.Model.Game.Entities.Characteristics.Position;
+import NewGameStructure.Position;
 import NewGameStructure.Model.Game.EntityModel;
 
 public class EntityController {

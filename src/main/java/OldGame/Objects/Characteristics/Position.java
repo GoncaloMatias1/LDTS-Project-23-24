@@ -1,6 +1,6 @@
 package OldGame.Objects.Characteristics;
 
-public class  Position {
+public class Position {
     private int x,y;
 
     public Position(int x, int y) {
@@ -14,7 +14,6 @@ public class  Position {
     public int getX() {return x;}
     public int getY() {return y;}
 
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         else if (obj == null) return false;
@@ -23,3 +22,5 @@ public class  Position {
         return (x == p.getX() && y == p.getY());
     }
 }
+
+

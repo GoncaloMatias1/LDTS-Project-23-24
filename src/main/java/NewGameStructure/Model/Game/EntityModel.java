@@ -1,8 +1,7 @@
 package NewGameStructure.Model.Game;
 
 import NewGameStructure.Model.Game.Entities.Characteristics.Health;
-import NewGameStructure.Model.Game.Entities.Characteristics.Position;
-import com.googlecode.lanterna.graphics.TextGraphics;
+import NewGameStructure.Position;
 
 public abstract class EntityModel {
     protected Position position;

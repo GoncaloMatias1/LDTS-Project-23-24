@@ -2,7 +2,7 @@ package NewGameStructure.Model.Game.Entities;
 
 import NewGameStructure.Model.Game.EntityModel;
 import NewGameStructure.Model.Game.Entities.Characteristics.Health;
-import NewGameStructure.Model.Game.Entities.Characteristics.Position;
+import NewGameStructure.Position;
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
