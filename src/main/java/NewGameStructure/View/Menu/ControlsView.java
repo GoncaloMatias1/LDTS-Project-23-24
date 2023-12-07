@@ -1,4 +1,16 @@
 package NewGameStructure.View.Menu;
 
-public class ControlsView {
+import NewGameStructure.GUI;
+import NewGameStructure.Model.Menu.ControlsModel;
+import NewGameStructure.View.View;
+
+public class ControlsView extends View<ControlsModel> {
+    public ControlsView(ControlsModel controlsModel){
+        super(controlsModel);
+    }
+
+    @Override
+    public void draw(GUI gui){
+        gui.getScreen().clear();
+    }
 }
