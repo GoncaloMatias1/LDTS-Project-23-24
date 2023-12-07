@@ -25,7 +25,7 @@ public class MainMenuController extends Controller<MainMenuModel> {
                 break;
             case ENTER:
                 if (getModel().getSelectedItem() == 0) application.setState(new ArenaState(
-                        new ArenaModel(100, 30)));
+                        new ArenaModel(application.getGui().getWidth(), application.getGui().getHeight())));
                 if (getModel().getSelectedItem() == 1) application.setState(new ControlsState(new ControlsModel()));
                 if (getModel().getSelectedItem() == 2) application.setState(null);
         }

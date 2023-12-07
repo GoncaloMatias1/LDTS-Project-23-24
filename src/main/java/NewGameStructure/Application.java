@@ -45,5 +45,8 @@ public class Application {
     public State getState(){
         return state;
     }
+    public GUI getGui() {
+        return gui;
+    }
 }
 

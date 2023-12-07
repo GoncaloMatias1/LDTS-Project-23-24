@@ -41,11 +41,20 @@ public class GUI {
         KeyStroke keyStroke = screen.pollInput();
         if (keyStroke == null) return ACTION.NONE;
 
-        if (keyStroke.getKeyType() == KeyType.ArrowUp) return ACTION.UP;
-        if (keyStroke.getKeyType() == KeyType.ArrowDown) return ACTION.DOWN;
-        if (keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
-        if (keyStroke.getKeyType() == KeyType.ArrowRight) return ACTION.RIGHT;
-        if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.ENTER;
+        if (keyStroke.getKeyType() == KeyType.ArrowUp ||
+                (keyStroke.getKeyType() == KeyType.Character &&
+                        (keyStroke.getCharacter() == 'w' || keyStroke.getCharacter() == 'W'))) return ACTION.UP;
+        if (keyStroke.getKeyType() == KeyType.ArrowDown ||
+                (keyStroke.getKeyType() == KeyType.Character &&
+                        (keyStroke.getCharacter() == 's' || keyStroke.getCharacter() == 'S'))) return ACTION.DOWN;
+        if (keyStroke.getKeyType() == KeyType.ArrowLeft ||
+                (keyStroke.getKeyType() == KeyType.Character &&
+                        (keyStroke.getCharacter() == 'a' || keyStroke.getCharacter() == 'A'))) return ACTION.LEFT;
+        if (keyStroke.getKeyType() == KeyType.ArrowRight ||
+                (keyStroke.getKeyType() == KeyType.Character &&
+                        (keyStroke.getCharacter() == 'd' || keyStroke.getCharacter() == 'D'))) return ACTION.RIGHT;
+        if (keyStroke.getKeyType() == KeyType.Enter ||
+                (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == ' ')) return ACTION.ENTER;
         if (keyStroke.getKeyType() == KeyType.Escape) return ACTION.BACK;
         return ACTION.NONE;
     }
