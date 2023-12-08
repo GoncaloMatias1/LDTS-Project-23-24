@@ -21,7 +21,7 @@ public class MainMenuView extends View<MainMenuModel> {
             int width = gui.getWidth();
             int height = gui.getHeight();
             TextGraphics graphics = gui.getGraphics();
-            graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
+            graphics.setBackgroundColor(TextColor.Factory.fromString("#000000")); //preto
             graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
 
             // ASCII Art for "Space Invaders"
@@ -45,9 +45,9 @@ public class MainMenuView extends View<MainMenuModel> {
             }
             for (int i = 0; i < getModel().getMenuItems().length; i++) {
                 if (i == getModel().getSelectedItem()) {
-                    graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF00")); // Yellow for selected
+                    graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF00")); // amarelo
                 } else {
-                    graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF")); // White for non-selected
+                    graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF")); // branco
                 }
                 graphics.putString(new TerminalPosition(width / 2 - getModel().getMenuItems()[i].length() / 2, height / 2 + i * 2), getModel().getMenuItems()[i]);
             }

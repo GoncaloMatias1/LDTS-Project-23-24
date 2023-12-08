@@ -1,4 +1,5 @@
 package NewGameStructure.Model.Game.Entities.Characteristics;
+
 public class Health {
     private int currentHealth;
     private int maxHealth;
@@ -26,8 +27,11 @@ public class Health {
         return currentHealth;
     }
 
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
     public boolean isAlive() {
         return currentHealth > 0;
     }
-
 }
