@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 
 public class GUI {
     private Screen screen;
-    public enum ACTION {UP, DOWN, LEFT, RIGHT, ENTER, NONE}
+    public enum ACTION {UP, DOWN, LEFT, RIGHT, ENTER, NONE, ESCAPE}
     public GUI(Screen screen){
         this.screen = screen;
     }
@@ -37,18 +37,30 @@ public class GUI {
         screen.doResizeIfNecessary();
         return screen;
     }
-    public ACTION getAction() throws IOException{
+    // Inside the GUI class...
+
+    public ACTION getAction() throws IOException {
         KeyStroke keyStroke = screen.pollInput();
         if (keyStroke == null) return ACTION.NONE;
 
-        if (keyStroke.getKeyType() == KeyType.ArrowUp) return ACTION.UP;
-        if (keyStroke.getKeyType() == KeyType.ArrowDown) return ACTION.DOWN;
-        if (keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
-        if (keyStroke.getKeyType() == KeyType.ArrowRight) return ACTION.RIGHT;
-        if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.ENTER;
-
-        return ACTION.NONE;
+        switch (keyStroke.getKeyType()) {
+            case ArrowUp:
+                return ACTION.UP;
+            case ArrowDown:
+                return ACTION.DOWN;
+            case ArrowLeft:
+                return ACTION.LEFT;
+            case ArrowRight:
+                return ACTION.RIGHT;
+            case Enter:
+                return ACTION.ENTER;
+            case Escape:
+                return ACTION.ESCAPE; // Handle ESC key
+            default:
+                return ACTION.NONE;
+        }
     }
+
     public TextGraphics getGraphics(){
         TextGraphics textGraphics = screen.newTextGraphics();
         return textGraphics;
