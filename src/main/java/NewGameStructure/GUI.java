@@ -49,7 +49,6 @@ public class GUI {
         if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.ENTER;
         if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == ' ') {
             System.out.println("Detected action: ");
-            return ACTION.SHOOT;
         }
 
         return ACTION.NONE;

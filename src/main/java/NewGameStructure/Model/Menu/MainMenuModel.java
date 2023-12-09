@@ -2,6 +2,7 @@ package NewGameStructure.Model.Menu;
 
 import NewGameStructure.Application;
 import NewGameStructure.Position;
+import NewGameStructure.States.Menu.ArenaState;
 import NewGameStructure.States.Menu.ControlsState;
 
 public class MainMenuModel {
@@ -17,7 +18,7 @@ public class MainMenuModel {
     public void select() {
         switch (selectedItem) {
             case 0: // PLAY
-                app.setState(new ControlsState(new ControlsModel(new ArenaModel(100, 30))));
+                app.setState(new ArenaState(new ArenaModel(100, 30)));
                 break;
             case 1: // CONTROLS
                 // Handle CONTROLS selection

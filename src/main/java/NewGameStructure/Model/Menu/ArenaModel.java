@@ -11,6 +11,8 @@ public class ArenaModel {
     private int width;
     private int height;
     private PlayerShip playerShip;
+    private List<Projectile> projectiles = new ArrayList<>();
+
 
     public ArenaModel(int width, int height) {
         this.width = width;
@@ -33,8 +35,6 @@ public class ArenaModel {
         playerShip.moveRight();
     }
 
-    private List<Projectile> projectiles = new ArrayList<>();
-
     public List<Projectile> getProjectiles() {
         return projectiles;
     }
@@ -48,4 +48,5 @@ public class ArenaModel {
     public void playerShoot() {
         projectiles.add(playerShip.shoot());
     }
+
 }
