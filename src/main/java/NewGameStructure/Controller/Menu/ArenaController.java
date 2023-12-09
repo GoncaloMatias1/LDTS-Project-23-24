@@ -12,6 +12,7 @@ public class ArenaController extends Controller<ArenaModel> {
 
     @Override
     public void step(Application application, GUI.ACTION action){
+        getModel().updateProjectiles();
         switch (action){
             case RIGHT:
                 getModel().movePlayerShipRight();
