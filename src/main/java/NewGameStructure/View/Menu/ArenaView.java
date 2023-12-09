@@ -2,6 +2,7 @@ package NewGameStructure.View.Menu;
 
 import NewGameStructure.GUI;
 import NewGameStructure.Model.Game.Entities.Projectile;
+import NewGameStructure.Model.Game.Entities.Shield;
 import NewGameStructure.Model.Menu.ArenaModel;
 import NewGameStructure.View.View;
 import com.googlecode.lanterna.SGR;
@@ -36,6 +37,10 @@ public class ArenaView extends View<ArenaModel> {
         getModel().getPlayerShip().draw(graphics);
         for (Projectile projectile : getModel().getProjectiles()) {
             projectile.draw(graphics);
+        }
+        // Draw the shields
+        for (Shield shield : getModel().getShields()) {
+            shield.draw(graphics);
         }
         // Update the screen to show the latest drawings
         try {
