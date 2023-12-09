@@ -1,7 +1,10 @@
 package NewGameStructure;
 
 import NewGameStructure.GUI;
+import NewGameStructure.Model.Menu.ArenaModel;
+import NewGameStructure.Model.Menu.ControlsModel;
 import NewGameStructure.Model.Menu.MainMenuModel;
+import NewGameStructure.States.Menu.ControlsState;
 import NewGameStructure.States.Menu.MainMenuState;
 import NewGameStructure.States.State;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -17,7 +20,7 @@ public class Application {
     private static State state;
     public Application() throws IOException{
         this.gui = new GUI(100, 30);
-        this.state = new MainMenuState(new MainMenuModel());
+        this.state = new MainMenuState(new MainMenuModel(this),this);
     }
     public static void main(String[] args) throws IOException{
         new Application().run();
@@ -27,6 +30,7 @@ public class Application {
         int frameTime = 60;
         while (state!=null){
             long startTime = System.currentTimeMillis();
+            System.out.println("Current state: " + state.getClass().getSimpleName());
             state.step(this, gui);
 
             long elapsedTime = System.currentTimeMillis() -startTime;
@@ -39,8 +43,8 @@ public class Application {
         gui.getScreen().stopScreen();
         System.exit(0);
     }
-    public void setState(State state) {
-        this.state = state;
+    public void setState(State newState) {
+        this.state = newState;
     }
     public State getState(){
         return state;

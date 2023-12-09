@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 
 public class GUI {
     private Screen screen;
-    public enum ACTION {UP, DOWN, LEFT, RIGHT, ENTER, NONE}
+    public enum ACTION {UP, DOWN, LEFT, RIGHT, ENTER,SHOOT, NONE}
     public GUI(Screen screen){
         this.screen = screen;
     }
@@ -46,6 +46,10 @@ public class GUI {
         if (keyStroke.getKeyType() == KeyType.ArrowLeft) return ACTION.LEFT;
         if (keyStroke.getKeyType() == KeyType.ArrowRight) return ACTION.RIGHT;
         if (keyStroke.getKeyType() == KeyType.Enter) return ACTION.ENTER;
+        if (keyStroke.getKeyType() == KeyType.Character && keyStroke.getCharacter() == ' ') {
+            System.out.println("Detected action: ");
+            return ACTION.SHOOT;
+        }
 
         return ACTION.NONE;
     }
