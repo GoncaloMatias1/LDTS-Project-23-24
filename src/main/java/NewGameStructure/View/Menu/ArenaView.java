@@ -1,6 +1,7 @@
 package NewGameStructure.View.Menu;
 
 import NewGameStructure.GUI;
+import NewGameStructure.Model.Game.Entities.Projectile;
 import NewGameStructure.Model.Menu.ArenaModel;
 import NewGameStructure.View.View;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -27,7 +28,9 @@ public class ArenaView extends View<ArenaModel> {
 
         // Draw the player ship
         getModel().getPlayerShip().draw(graphics);
-
+        for (Projectile projectile : getModel().getProjectiles()) {
+            projectile.draw(graphics);
+        }
         // Update the screen to show the latest drawings
         try {
             gui.getScreen().refresh();

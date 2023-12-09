@@ -1,26 +1,27 @@
 package NewGameStructure.Model.Game.Entities;
 
-import NewGameStructure.Model.Game.EntityModel;
 import NewGameStructure.Position;
-import com.googlecode.lanterna.TextCharacter;
-import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
-public class Projectile extends EntityModel {
-    private static final int SPEED = 2; // Speed of projectile
-    private final TextCharacter projectileCharacter;
+public class Projectile {
+    private Position position;
+    private final int speed = 1; // Determines how many spaces the projectile moves per update
 
-    public Projectile(Position startPosition) {
-        super(startPosition, null, true); // Assuming null for Health and true for destructible
-        this.projectileCharacter = new TextCharacter('|', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK);
+    public Projectile(int x, int y) {
+        this.position = new Position(x, y);
     }
 
     public void update() {
-        Position currentPosition = getPosition();
-        currentPosition.setY(currentPosition.getY() - SPEED); // Move the projectile up
+        position.setY(position.getY() - speed); // Moves the projectile up by reducing the Y coordinate
+    }
+
+    public Position getPosition() {
+        return position;
     }
 
     public void draw(TextGraphics graphics) {
-        graphics.setCharacter(getPosition().getX(), getPosition().getY(), projectileCharacter);
+        graphics.setCharacter(position.getX(), position.getY(), '|'); //projectile character
     }
+
+    // Additional methods for drawing and collision detection might go here
 }

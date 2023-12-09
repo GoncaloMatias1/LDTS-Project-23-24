@@ -27,7 +27,7 @@ public class ControlsController extends Controller<ControlsModel> {
     public void handleSpacebar() {
         System.out.println("Spacebar pressed - Shooting");
         Position shipPosition = getModel().getPlayerShipPosition();
-        Projectile projectile = new Projectile(new Position(shipPosition.getX()+0, shipPosition.getY() - 1));
+        Projectile projectile = new Projectile(shipPosition.getX(), shipPosition.getY() - 1);
         getModel().addProjectile(projectile);
     }
 }

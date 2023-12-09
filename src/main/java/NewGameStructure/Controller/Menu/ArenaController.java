@@ -19,6 +19,9 @@ public class ArenaController extends Controller<ArenaModel> {
             case LEFT:
                 getModel().movePlayerShipLeft();
                 break; // Break statement added here
+            case SHOOT: // You need to define SHOOT in your ACTION enum
+                getModel().playerShoot();
+                break;
         }
     }
 }

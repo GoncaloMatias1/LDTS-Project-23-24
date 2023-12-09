@@ -36,4 +36,9 @@ public class PlayerShip extends EntityModel {
             currentPosition.setX(currentPosition.getX() + 1);
         }
     }
+
+    public Projectile shoot() {
+        // Assuming the projectile spawns above the ship
+        return new Projectile(getPosition().getX(), getPosition().getY() - 1);
+    }
 }
