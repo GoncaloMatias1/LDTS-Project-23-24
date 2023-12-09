@@ -8,8 +8,10 @@ import NewGameStructure.Model.Menu.MainMenuModel;
 import NewGameStructure.States.Menu.ArenaState;
 
 public class MainMenuController extends Controller<MainMenuModel> {
-    public MainMenuController(MainMenuModel mainMenuModel){
+    private Application application;
+    public MainMenuController(MainMenuModel mainMenuModel, Application application){
         super(mainMenuModel);
+        this.application = application;
     }
 
     @Override

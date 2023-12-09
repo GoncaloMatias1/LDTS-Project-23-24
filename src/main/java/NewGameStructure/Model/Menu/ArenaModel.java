@@ -2,6 +2,11 @@ package NewGameStructure.Model.Menu;
 
 import NewGameStructure.Model.Game.Entities.Characteristics.Health;
 import NewGameStructure.Model.Game.Entities.PlayerShip;
+import NewGameStructure.Model.Game.Entities.Projectile;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class ArenaModel {
     private int width;
     private int height;
@@ -26,5 +31,21 @@ public class ArenaModel {
 
     public void movePlayerShipRight() {
         playerShip.moveRight();
+    }
+
+    private List<Projectile> projectiles = new ArrayList<>();
+
+    public List<Projectile> getProjectiles() {
+        return projectiles;
+    }
+
+    public void updateProjectiles() {
+        // Move projectiles and remove if they go off-screen
+        projectiles.forEach(Projectile::update);
+        projectiles.removeIf(p -> p.getPosition().getY() < 0);
+    }
+
+    public void playerShoot() {
+        projectiles.add(playerShip.shoot());
     }
 }
