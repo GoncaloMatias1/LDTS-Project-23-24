@@ -11,9 +11,8 @@ import NewGameStructure.View.View;
 
 public class MainMenuState extends State<MainMenuModel> {
     private Application application;
-    public MainMenuState(MainMenuModel mainMenuModel,Application application){
+    public MainMenuState(MainMenuModel mainMenuModel){
         super(mainMenuModel);
-        this.application = application;
     }
     @Override
     protected View<MainMenuModel> getView() {
