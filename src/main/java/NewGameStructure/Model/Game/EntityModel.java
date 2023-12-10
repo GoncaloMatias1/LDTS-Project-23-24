@@ -1,28 +1,34 @@
 package NewGameStructure.Model.Game;
 
-import NewGameStructure.Model.Game.Entities.Characteristics.Health;
 import NewGameStructure.Position;
 
 public abstract class EntityModel {
     protected Position position;
-    protected Health health;
+    protected int lives; // Use lives instead of Health
     protected boolean isEnemy;
 
-    public EntityModel(Position position, Health health, boolean isEnemy) {
+    public EntityModel(Position position, int lives, boolean isEnemy) {
         this.position = position;
-        this.health = health;
+        this.lives = lives; // Initialize with the given number of lives
         this.isEnemy = isEnemy;
     }
 
+    // Getters and setters for position and lives...
     public Position getPosition() {
         return position;
     }
 
-    public Health getHealth() {
-        return health;
+    public int getLives() {
+        return lives;
+    }
+
+    public void setLives(int lives) {
+        this.lives = lives;
     }
 
     public boolean isEnemy() {
         return isEnemy;
     }
+
+    // Other methods...
 }
