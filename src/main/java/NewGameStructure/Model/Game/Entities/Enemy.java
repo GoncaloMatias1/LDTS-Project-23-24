@@ -28,4 +28,12 @@ public class Enemy extends EntityModel {
         graphics.setCharacter(position.getX(), position.getY(), 'W'); //projectile character
     }
 
+    public boolean isAlive() {
+        return lives > 0;
+    }
+
+    public void hit() {
+        lives--;
+    }
+
 }

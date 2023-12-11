@@ -23,5 +23,9 @@ public class Projectile {
         graphics.setCharacter(position.getX(), position.getY(), '|'); //projectile character
     }
 
+    public boolean checkCollision(Enemy enemy) {
+        return position.equals(enemy.getPosition());
+    }
+
     // Additional methods for drawing and collision detection might go here
 }
