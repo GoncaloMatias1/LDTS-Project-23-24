@@ -41,7 +41,7 @@ public class ArenaView extends View<ArenaModel> {
             shield.draw(graphics);
         }
 
-        getModel().getEnemy().draw(graphics);
+        getModel().getEnemyWave().draw(graphics);
 
         // Refresh the screen to display the latest drawings
         try {

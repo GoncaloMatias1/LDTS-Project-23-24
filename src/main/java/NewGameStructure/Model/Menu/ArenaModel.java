@@ -1,9 +1,6 @@
 package NewGameStructure.Model.Menu;
 
-import NewGameStructure.Model.Game.Entities.Enemy;
-import NewGameStructure.Model.Game.Entities.PlayerShip;
-import NewGameStructure.Model.Game.Entities.Projectile;
-import NewGameStructure.Model.Game.Entities.Shield;
+import NewGameStructure.Model.Game.Entities.*;
 import NewGameStructure.Position;
 
 import java.util.ArrayList;
@@ -15,7 +12,7 @@ public class ArenaModel {
     private PlayerShip playerShip;
     private List<Projectile> projectiles = new ArrayList<>();
     private List<Shield> shields = new ArrayList<>();
-    private Enemy testenemy = new Enemy(50, 10, 1); //Isto é apenas um inimigo teste para o ver ingame
+    private EnemyWave enemyWave = new EnemyWave();
 
     public ArenaModel(int width, int height) {
         this.width = width;
@@ -77,8 +74,7 @@ public class ArenaModel {
             // Handle game over
         }
     }
-
-    public Enemy getEnemy(){
-        return testenemy;
+    public EnemyWave getEnemyWave(){
+        return enemyWave;
     }
 }
