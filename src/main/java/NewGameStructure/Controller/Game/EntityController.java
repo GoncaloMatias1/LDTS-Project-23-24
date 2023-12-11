@@ -13,6 +13,9 @@ public class EntityController {
     private List<Enemy> enemies;
     private EntityModel model;
 
+    public EntityController(EntityModel model) {
+        this.model = model;
+    }
     public void updateEntities() {
         for (Projectile projectile : projectiles) {
             projectile.update(); // Move the projectile
@@ -26,9 +29,7 @@ public class EntityController {
         // Update enemy positions or behaviors
     }
 
-    public EntityController(EntityModel model) {
-        this.model = model;
-    }
+
 
     public void moveEntity(int deltaX, int deltaY) {
         Position position = model.getPosition();
