@@ -10,7 +10,6 @@ import NewGameStructure.View.Menu.MainMenuView;
 import NewGameStructure.View.View;
 
 public class MainMenuState extends State<MainMenuModel> {
-    private Application application;
     public MainMenuState(MainMenuModel mainMenuModel){
         super(mainMenuModel);
     }
@@ -21,6 +20,6 @@ public class MainMenuState extends State<MainMenuModel> {
 
     @Override
     protected Controller<MainMenuModel> getController() {
-        return new MainMenuController(getModel(),application);
+        return new MainMenuController(getModel());
     }
 }

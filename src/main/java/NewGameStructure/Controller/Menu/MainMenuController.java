@@ -10,10 +10,8 @@ import NewGameStructure.States.Menu.ArenaState;
 import NewGameStructure.States.Menu.ControlsState;
 
 public class MainMenuController extends Controller<MainMenuModel> {
-    private Application application;
-    public MainMenuController(MainMenuModel mainMenuModel, Application application){
+    public MainMenuController(MainMenuModel mainMenuModel){
         super(mainMenuModel);
-        this.application = application;
     }
 
     @Override

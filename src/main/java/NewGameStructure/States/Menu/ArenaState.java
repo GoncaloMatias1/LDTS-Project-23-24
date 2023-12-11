@@ -21,10 +21,5 @@ public class ArenaState extends State<ArenaModel>{
         return new ArenaController(getModel());
     }
 
-    public void update() {
-        getModel().updateProjectiles();
-        // Any other update logic
-    }
-
 
 }
