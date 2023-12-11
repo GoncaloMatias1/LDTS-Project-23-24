@@ -1,5 +1,6 @@
 package NewGameStructure.Model.Menu;
 
+import NewGameStructure.Model.Game.Entities.Enemy;
 import NewGameStructure.Model.Game.Entities.PlayerShip;
 import NewGameStructure.Model.Game.Entities.Projectile;
 import NewGameStructure.Model.Game.Entities.Shield;
@@ -14,6 +15,7 @@ public class ArenaModel {
     private PlayerShip playerShip;
     private List<Projectile> projectiles = new ArrayList<>();
     private List<Shield> shields = new ArrayList<>();
+    private Enemy testenemy = new Enemy(50, 10, 1); //Isto é apenas um inimigo teste para o ver ingame
 
     public ArenaModel(int width, int height) {
         this.width = width;
@@ -74,5 +76,9 @@ public class ArenaModel {
         if (this.playerShip.getLives() <= 0) {
             // Handle game over
         }
+    }
+
+    public Enemy getEnemy(){
+        return testenemy;
     }
 }
