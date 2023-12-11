@@ -4,6 +4,8 @@ import NewGameStructure.Application;
 import NewGameStructure.Controller.Controller;
 import NewGameStructure.GUI;
 import NewGameStructure.Model.Menu.ArenaModel;
+import NewGameStructure.Model.Menu.GameOverModel;
+import NewGameStructure.States.Menu.GameOverState;
 
 public class ArenaController extends Controller<ArenaModel> {
     public ArenaController(ArenaModel arenaModel){
@@ -12,15 +14,18 @@ public class ArenaController extends Controller<ArenaModel> {
 
     @Override
     public void step(Application application, GUI.ACTION action){
+        if (!getModel().getPlayerShip().isAlive()){
+            application.setState(new GameOverState(new GameOverModel()));
+        }
         getModel().updateProjectiles();
         switch (action){
             case RIGHT:
                 getModel().movePlayerShipRight();
-                break; // Break statement added here
+                break;
             case LEFT:
                 getModel().movePlayerShipLeft();
-                break; // Break statement added here
-            case ENTER: // You need to define SHOOT in your ACTION enum
+                break;
+            case ENTER:
                 getModel().playerShoot();
                 break;
         }
