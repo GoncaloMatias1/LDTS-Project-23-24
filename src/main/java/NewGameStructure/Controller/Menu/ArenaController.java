@@ -17,13 +17,14 @@ public class ArenaController extends Controller<ArenaModel> {
     private int steps;
     private boolean hasToMoveDown;
     private boolean hasToMoveRight;
-
+    private int gameOverArea;
     public ArenaController(ArenaModel arenaModel){
         super(arenaModel);
         cooldown = 0;
         steps = 76;
         hasToMoveDown = false;
         hasToMoveRight = true;
+        gameOverArea = getModel().getShields().get(0).getPosition().getY();
     }
 
 
@@ -31,6 +32,9 @@ public class ArenaController extends Controller<ArenaModel> {
     public void step(Application application, GUI.ACTION action){
         int time = 4;
         if (!getModel().getPlayerShip().isAlive()){
+            application.setState(new GameOverState(new GameOverModel()));
+        }
+        if (getModel().getEnemyWave().getEnemies().get(getModel().getEnemyWave().getEnemies().size()-1).getPosition().getY() == gameOverArea){
             application.setState(new GameOverState(new GameOverModel()));
         }
         if(cooldown == time){
@@ -62,7 +66,6 @@ public class ArenaController extends Controller<ArenaModel> {
         else cooldown++;
         getModel().updateKills();
         getModel().updatePlayerHit();
-
 
         switch (action){
             case RIGHT:
