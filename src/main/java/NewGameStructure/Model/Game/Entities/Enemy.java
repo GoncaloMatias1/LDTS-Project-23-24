@@ -21,7 +21,7 @@ public class Enemy extends EntityModel {
 
     public void moveDown() {
         Position currentPosition = getPosition();
-        currentPosition.setX(currentPosition.getY() + 1);
+        currentPosition.setY(currentPosition.getY() + 1);
     }
 
     public void draw(TextGraphics graphics) {

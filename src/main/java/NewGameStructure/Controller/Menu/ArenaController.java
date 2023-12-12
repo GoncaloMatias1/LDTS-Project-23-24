@@ -13,25 +13,57 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArenaController extends Controller<ArenaModel> {
+    private int cooldown;
+    private int steps;
+    private boolean hasToMoveDown;
+    private boolean hasToMoveRight;
+
     public ArenaController(ArenaModel arenaModel){
         super(arenaModel);
         cooldown = 0;
+        steps = 76;
+        hasToMoveDown = false;
+        hasToMoveRight = true;
     }
-    private int cooldown;
+
 
     @Override
     public void step(Application application, GUI.ACTION action){
-        int time = 3;
+        int time = 4;
         if (!getModel().getPlayerShip().isAlive()){
             application.setState(new GameOverState(new GameOverModel()));
         }
         if(cooldown == time){
             getModel().enemyShoot();
             cooldown = 0;
+            if(!hasToMoveDown){
+                if(hasToMoveRight){
+                    getModel().getEnemyWave().moveEnemiesRight();
+                    steps++;
+                    if(steps == 98){
+                        hasToMoveRight = false;
+                        hasToMoveDown = true;
+                    }
+                }
+                else{
+                    getModel().getEnemyWave().moveEnemiesLeft();
+                    steps--;
+                    if(steps == 76){
+                        hasToMoveRight = true;
+                        hasToMoveDown = true;
+                    }
+                }
+            }
+            else {
+                getModel().getEnemyWave().moveEnemiesDown();
+                hasToMoveDown = false;
+            }
         }
         else cooldown++;
         getModel().updateKills();
         getModel().updatePlayerHit();
+
+
         switch (action){
             case RIGHT:
                 getModel().movePlayerShipRight();
@@ -44,10 +76,6 @@ public class ArenaController extends Controller<ArenaModel> {
                 break;
         }
     }
-
-
-        // Remove projectiles that have gone off-screen or hit an enemy
-        // Update enemy positions or behaviors
 }
 
 
