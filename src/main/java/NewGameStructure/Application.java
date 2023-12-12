@@ -1,7 +1,9 @@
 package NewGameStructure;
 
 import NewGameStructure.GUI;
+import NewGameStructure.Model.Menu.GameOverModel;
 import NewGameStructure.Model.Menu.MainMenuModel;
+import NewGameStructure.States.Menu.GameOverState;
 import NewGameStructure.States.Menu.MainMenuState;
 import NewGameStructure.States.State;
 import com.googlecode.lanterna.graphics.TextGraphics;
