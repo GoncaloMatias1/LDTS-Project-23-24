@@ -21,12 +21,12 @@ public class GameOverModel {
     }
     public void addEntry(){
         selectedItem++;
-        if (selectedItem==3) selectedItem = 0;
+        if (selectedItem==2) selectedItem = 0;
     }
 
     public void removeEntry(){
         selectedItem--;
-        if (selectedItem==-1) selectedItem = 2;
+        if (selectedItem==-1) selectedItem = 1;
     }
     public Position getSelectorPos(){
         return selectorPos;
