@@ -14,6 +14,9 @@ public class Projectile {
     public void update() {
         position.setY(position.getY() - speed); // Moves the projectile up by reducing the Y coordinate
     }
+    public void updateEnemyBullet(){
+        position.setY(position.getY() + speed);
+    }
 
     public Position getPosition() {
         return position;
@@ -27,5 +30,7 @@ public class Projectile {
         return position.equals(enemy.getPosition());
     }
 
-    // Additional methods for drawing and collision detection might go here
+    public boolean checkPlayerCollision(PlayerShip playerShip){
+        return position.equals(playerShip.getPosition());
+    }
 }

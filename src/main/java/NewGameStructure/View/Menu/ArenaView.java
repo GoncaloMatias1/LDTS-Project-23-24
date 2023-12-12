@@ -36,6 +36,9 @@ public class ArenaView extends View<ArenaModel> {
             projectile.draw(graphics);
         }
 
+        for (Projectile projectile : getModel().getEnemyProjectiles()){
+            projectile.draw(graphics);
+        }
         // Draw shields
         for (Shield shield : getModel().getShields()) {
             shield.draw(graphics);

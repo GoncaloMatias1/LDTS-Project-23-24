@@ -1,9 +1,12 @@
 package NewGameStructure.Model.Game.Entities;
 
+import NewGameStructure.Model.Menu.ArenaModel;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 public class EnemyWave {
     private List<Enemy> enemies = new ArrayList<>();
@@ -18,9 +21,36 @@ public class EnemyWave {
             }
         }
     }
+    public void removeEnemies(List<Enemy> EnemiesRemove){
+        for (Enemy enemy : EnemiesRemove){
+            enemies.remove(enemy);
+        }
+    }
     public void draw(TextGraphics graphics){
         for (Enemy enemy : enemies){
             enemy.draw(graphics);
         }
     }
+    public Projectile randomShot(){
+        Random rand = new Random();
+        Enemy chosenEnemy = enemies.get(rand.nextInt(enemies.size()));
+        return chosenEnemy.shoot();
+    }
+
+    public void moveEnemiesRight(){
+        for(Enemy enemy : enemies){
+            enemy.moveRight();
+        }
+    }
+    public void moveEnemiesLeft(){
+        for(Enemy enemy : enemies){
+            enemy.moveLeft();
+        }
+    }
+    public void moveEnemiesDown(){
+        for(Enemy enemy : enemies){
+            enemy.moveDown();
+        }
+    }
+
 }

@@ -9,17 +9,29 @@ import NewGameStructure.Model.Menu.ArenaModel;
 import NewGameStructure.Model.Menu.GameOverModel;
 import NewGameStructure.States.Menu.GameOverState;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ArenaController extends Controller<ArenaModel> {
     public ArenaController(ArenaModel arenaModel){
         super(arenaModel);
+        cooldown = 0;
     }
+    private int cooldown;
 
     @Override
     public void step(Application application, GUI.ACTION action){
+        int time = 3;
         if (!getModel().getPlayerShip().isAlive()){
             application.setState(new GameOverState(new GameOverModel()));
         }
-
+        if(cooldown == time){
+            getModel().enemyShoot();
+            cooldown = 0;
+        }
+        else cooldown++;
+        getModel().updateKills();
+        getModel().updatePlayerHit();
         switch (action){
             case RIGHT:
                 getModel().movePlayerShipRight();
@@ -33,18 +45,10 @@ public class ArenaController extends Controller<ArenaModel> {
         }
     }
 
-    public void updateEntities() {
-        for (Projectile projectile : getModel().getProjectiles()) {
-            projectile.update(); // Move the projectile
-            for (Enemy enemy : enemies) {
-                if (projectile.checkCollision(enemy)) {
-                    enemy.hit();
-                }
-            }
-        }
+
         // Remove projectiles that have gone off-screen or hit an enemy
         // Update enemy positions or behaviors
-    }
 }
+
 
 

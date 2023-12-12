@@ -1,10 +1,6 @@
 package NewGameStructure.Model.Menu;
 
-import NewGameStructure.Application;
 import NewGameStructure.Position;
-import NewGameStructure.States.Menu.ArenaState;
-import NewGameStructure.States.Menu.ControlsState;
-
 public class MainMenuModel {
     private static final String[] menuItems = {"PLAY", "CONTROLS", "QUIT"};
     private Position selectorPos;

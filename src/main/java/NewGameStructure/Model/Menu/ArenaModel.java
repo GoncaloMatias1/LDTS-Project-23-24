@@ -11,6 +11,7 @@ public class ArenaModel {
     private int height;
     private PlayerShip playerShip;
     private List<Projectile> projectiles = new ArrayList<>();
+    private List<Projectile> enemyProjectiles = new ArrayList<>();
     private List<Shield> shields = new ArrayList<>();
     private EnemyWave enemyWave = new EnemyWave();
 
@@ -45,14 +46,11 @@ public class ArenaModel {
         return projectiles;
     }
 
-    public void updateProjectiles() {
-        // Move projectiles and remove if they go off-screen
-        projectiles.forEach(Projectile::update);
-        projectiles.removeIf(p -> p.getPosition().getY() < 0);
-    }
-
     public void playerShoot() {
         projectiles.add(playerShip.shoot());
+    }
+    public void enemyShoot(){
+        enemyProjectiles.add(enemyWave.randomShot());
     }
 
     private void initializeShields(int width, int height) {
@@ -67,6 +65,10 @@ public class ArenaModel {
         return shields;
     }
 
+    public List<Projectile> getEnemyProjectiles() {
+        return enemyProjectiles;
+    }
+
     // Method to handle player's life loss
     public void playerHit() {
         this.playerShip.loseLife();
@@ -76,5 +78,57 @@ public class ArenaModel {
     }
     public EnemyWave getEnemyWave(){
         return enemyWave;
+    }
+    public void removeProjectiles(List<Projectile> ProjectilesRemove){
+        for (Projectile projectile : ProjectilesRemove){
+            projectiles.remove(projectile);
+        }
+    }
+    public void removeEnemyProjectiles(List<Projectile> ProjectilesRemove){
+        for (Projectile projectile : ProjectilesRemove){
+            enemyProjectiles.remove(projectile);
+        }
+    }
+
+
+    public void updateKills() {
+        List<Enemy> EnemiesRemove = new ArrayList<>();
+        List<Projectile> ProjectilesRemove  = new ArrayList<>();
+
+        for (Projectile projectile : projectiles) {
+            projectile.update(); // Move the projectile
+            if (projectile.getPosition().getY() == 0){
+                ProjectilesRemove.add(projectile);
+                break;
+            }
+            for (Enemy enemy : enemyWave.getEnemies()) {
+                if (projectile.checkCollision(enemy)) {
+                    enemy.hit();
+                    EnemiesRemove.add(enemy);
+                    ProjectilesRemove.add(projectile);
+                    break;
+                }
+            }
+        }
+        enemyWave.removeEnemies(EnemiesRemove);
+        removeProjectiles(ProjectilesRemove);
+    }
+
+    public void updatePlayerHit(){
+        List<Projectile> ProjectilesRemove = new ArrayList<>();
+
+        for (Projectile projectile : enemyProjectiles){
+            projectile.updateEnemyBullet();
+            if(projectile.getPosition().getY() == height - 1){
+                ProjectilesRemove.add(projectile);
+                break;
+            }
+            if(projectile.checkPlayerCollision(playerShip)){
+                playerHit();
+                ProjectilesRemove.add(projectile);
+                break;
+            }
+        }
+        removeEnemyProjectiles(ProjectilesRemove);
     }
 }

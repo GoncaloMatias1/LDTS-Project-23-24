@@ -8,8 +8,7 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class PlayerShip extends EntityModel {
     private final TextCharacter shipCharacter;
-    private final int minX; // Left boundary
-    private final int maxX; // Right boundary
+
 
     public PlayerShip(int startX, int startY, int screenWidth, int initialLives) {
         super(new Position(startX, startY), initialLives, false); // Added initialLives and false for isEnemy
@@ -22,19 +21,6 @@ public class PlayerShip extends EntityModel {
         graphics.setCharacter(getPosition().getX(), getPosition().getY(), shipCharacter);
     }
 
-    public void moveLeft() {
-        Position currentPosition = getPosition();
-        if (currentPosition.getX() > minX) {
-            currentPosition.setX(currentPosition.getX() - 1);
-        }
-    }
-
-    public void moveRight() {
-        Position currentPosition = getPosition();
-        if (currentPosition.getX() < maxX) {
-            currentPosition.setX(currentPosition.getX() + 1);
-        }
-    }
 
     public Projectile shoot() {
         // Assuming the projectile spawns above the ship
