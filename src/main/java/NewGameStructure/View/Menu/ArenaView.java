@@ -36,15 +36,21 @@ public class ArenaView extends View<ArenaModel> {
             projectile.draw(graphics);
         }
 
-        for (Projectile projectile : getModel().getEnemyProjectiles()){
+        // Draw enemy projectiles
+        for (Projectile projectile : getModel().getEnemyProjectiles()) {
             projectile.draw(graphics);
         }
+
         // Draw shields
         for (Shield shield : getModel().getShields()) {
             shield.draw(graphics);
         }
 
+        // Draw enemies
         getModel().getEnemyWave().draw(graphics);
+
+        // Draw the score
+        drawScore(graphics);
 
         // Refresh the screen to display the latest drawings
         try {
@@ -80,5 +86,10 @@ public class ArenaView extends View<ArenaModel> {
         graphics.disableModifiers(SGR.BOLD); // Reset to normal text for other drawings
     }
 
-
+    private void drawScore(TextGraphics graphics) {
+        String scoreText = "Score: " + getModel().getScore(); // Get the current score from the model
+        int scorePosX = getModel().getWidth() - scoreText.length() - 2; // Calculate X position for score
+        int scorePosY = 1; // Y position for score (same as lives for alignment)
+        graphics.putString(new TerminalPosition(scorePosX, scorePosY), scoreText, SGR.BOLD);
+    }
 }
