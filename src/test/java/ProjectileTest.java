@@ -1,7 +1,6 @@
 import NewGameStructure.Model.Game.Entities.Enemy;
 import NewGameStructure.Model.Game.Entities.PlayerShip;
-import NewGameStructure.Model.Game.Entities.Projectile;
-import NewGameStructure.Position;
+import NewGameStructure.Model.Game.Projectile;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;
