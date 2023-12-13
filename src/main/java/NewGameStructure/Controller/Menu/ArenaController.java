@@ -16,6 +16,7 @@ public class ArenaController extends Controller<ArenaModel> {
     private boolean hasToMoveDown;
     private boolean hasToMoveRight;
     private int gameOverArea;
+    private int shootCooldown;
 
     public ArenaController(ArenaModel arenaModel) {
         super(arenaModel);
@@ -24,11 +25,13 @@ public class ArenaController extends Controller<ArenaModel> {
         hasToMoveDown = false;
         hasToMoveRight = true;
         gameOverArea = getModel().getShields().get(0).getPosition().getY();
+        shootCooldown = 0;
     }
 
     @Override
     public void step(Application application, GUI.ACTION action) {
         int time = 4;
+        int shootime = 4;
         if (!getModel().getPlayerShip().isAlive()) {
             application.setState(new GameOverState(new GameOverModel()));
         }
@@ -71,8 +74,14 @@ public class ArenaController extends Controller<ArenaModel> {
                 getModel().movePlayerShipLeft();
                 break;
             case ENTER:
-                getModel().playerShoot();
+                if(shootCooldown == shootime) {
+                    getModel().playerShoot();
+                    shootCooldown = 0;
+                }
                 break;
+        }
+        if (shootCooldown != shootime){
+            shootCooldown++;
         }
     }
 }
