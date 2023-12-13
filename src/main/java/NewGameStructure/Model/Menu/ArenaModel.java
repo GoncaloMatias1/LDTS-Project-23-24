@@ -1,6 +1,8 @@
 package NewGameStructure.Model.Menu;
 
+import NewGameStructure.Model.Game.EnemyWave;
 import NewGameStructure.Model.Game.Entities.*;
+import NewGameStructure.Model.Game.Projectile;
 import NewGameStructure.Position;
 
 import java.util.ArrayList;

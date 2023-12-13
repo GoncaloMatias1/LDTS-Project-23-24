@@ -1,5 +1,7 @@
-package NewGameStructure.Model.Game.Entities;
+package NewGameStructure.Model.Game;
 
+import NewGameStructure.Model.Game.Entities.Enemy;
+import NewGameStructure.Model.Game.Entities.PlayerShip;
 import NewGameStructure.Position;
 import com.googlecode.lanterna.graphics.TextGraphics;
 

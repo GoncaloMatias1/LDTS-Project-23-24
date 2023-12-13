@@ -1,10 +1,10 @@
-package NewGameStructure.Model.Game.Entities;
+package NewGameStructure.Model.Game;
 
-import NewGameStructure.Model.Menu.ArenaModel;
+import NewGameStructure.Model.Game.Entities.Enemy;
+import NewGameStructure.Model.Game.Projectile;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 

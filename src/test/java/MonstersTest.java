@@ -2,12 +2,11 @@ import NewGameStructure.Application;
 import NewGameStructure.Controller.Menu.ArenaController;
 import NewGameStructure.GUI;
 import NewGameStructure.Model.Game.Entities.Enemy;
-import NewGameStructure.Model.Game.Entities.EnemyWave;
-import NewGameStructure.Model.Game.Entities.Projectile;
+import NewGameStructure.Model.Game.EnemyWave;
+import NewGameStructure.Model.Game.Projectile;
 import NewGameStructure.Model.Menu.ArenaModel;
 import NewGameStructure.Position;
 import NewGameStructure.States.Menu.GameOverState;
-import NewGameStructure.States.State;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,8 +15,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class MonstersTest {
