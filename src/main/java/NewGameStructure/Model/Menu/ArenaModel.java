@@ -10,6 +10,8 @@ public class ArenaModel {
     private int width;
     private int height;
     private PlayerShip playerShip;
+
+    private int score;
     private List<Projectile> projectiles = new ArrayList<>();
     private List<Projectile> enemyProjectiles = new ArrayList<>();
     private List<Shield> shields = new ArrayList<>();
@@ -61,6 +63,16 @@ public class ArenaModel {
         }
     }
 
+    public void increaseScore(int points) {
+        this.score += points;
+    }
+
+
+    // Getter for the score
+    public int getScore() {
+        return this.score;
+    }
+
     public List<Shield> getShields() {
         return shields;
     }
@@ -91,27 +103,32 @@ public class ArenaModel {
     }
 
 
-    public void updateKills() {
-        List<Enemy> EnemiesRemove = new ArrayList<>();
-        List<Projectile> ProjectilesRemove  = new ArrayList<>();
+    public List<Enemy> updateKills() {
+        List<Enemy> enemiesToRemove = new ArrayList<>();
+        List<Projectile> projectilesToRemove = new ArrayList<>();
 
         for (Projectile projectile : projectiles) {
             projectile.update(); // Move the projectile
-            if (projectile.getPosition().getY() == 0){
-                ProjectilesRemove.add(projectile);
-                break;
+            if (projectile.getPosition().getY() == 0) {
+                projectilesToRemove.add(projectile);
+                continue;
             }
             for (Enemy enemy : enemyWave.getEnemies()) {
                 if (projectile.checkCollision(enemy)) {
                     enemy.hit();
-                    EnemiesRemove.add(enemy);
-                    ProjectilesRemove.add(projectile);
-                    break;
+                    projectilesToRemove.add(projectile);
+                    if (!enemy.isAlive()) {
+                        enemiesToRemove.add(enemy);
+                        increaseScore(10); // Assuming each enemy is worth 10 points
+                    }
+                    break; // Break to avoid multiple collisions with the same projectile
                 }
             }
         }
-        enemyWave.removeEnemies(EnemiesRemove);
-        removeProjectiles(ProjectilesRemove);
+
+        projectiles.removeAll(projectilesToRemove);
+        enemyWave.getEnemies().removeAll(enemiesToRemove);
+        return enemiesToRemove;
     }
 
     public void updatePlayerHit(){
