@@ -25,7 +25,7 @@ class GameOverTest {
 
     @Test
     public void testNavigateToStartAgain() {
-        // Ensure the selectedItem is set to 0 "START AGAIN"
+        // selectedItem is set to 0 "START AGAIN"
         while (model.getSelectedItem() != 0) {
             model.removeEntry();
         }
@@ -35,7 +35,7 @@ class GameOverTest {
 
     @Test
     public void testNavigateToQuit() {
-        // Ensure the selectedItem is set to 1 "QUIT"
+        // selectedItem is set to 1 "QUIT"
         while (model.getSelectedItem() != 1) {
             model.addEntry();
         }
