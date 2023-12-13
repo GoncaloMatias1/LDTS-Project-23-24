@@ -32,6 +32,12 @@ Developed by Gonçalo Barroso (up202207832@fe.up.pt), Gonçalo Matias (up2021087
 
 ![img.png](img.png)
 
+### MAIN SCREEN WHILE PLAYING
+
+...
+
+---
+
 ### Current Implementation
 
 Our current codebase consists of two structures: an older version with partial implementation and a new version employing our chosen design patterns. Some features from the old structure are yet to be integrated into the new one. Consequently, the new version currently displays only a black screen. The older version, although not aligned with our design goals, already has some functioning features.
