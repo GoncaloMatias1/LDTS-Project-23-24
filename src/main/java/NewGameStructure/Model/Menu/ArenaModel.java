@@ -59,14 +59,15 @@ public class ArenaModel {
         int shieldSpacing = width / 6; // Example spacing value
         int shieldY = height - 10; // Example Y position, adjust as needed
         for (int i = 0; i < 5; i++) {
-            shields.add(new Shield(new Position(10 + i * shieldSpacing + shieldSpacing / 2, shieldY)));
+            for (int j = -1; j<2; j++) {
+                shields.add(new Shield(new Position((10 + i * shieldSpacing + shieldSpacing / 2) + j, shieldY)));
+            }
         }
     }
 
     public void increaseScore(int points) {
         this.score += points;
     }
-
 
     // Getter for the score
     public int getScore() {
@@ -91,21 +92,11 @@ public class ArenaModel {
     public EnemyWave getEnemyWave(){
         return enemyWave;
     }
-    public void removeProjectiles(List<Projectile> ProjectilesRemove){
-        for (Projectile projectile : ProjectilesRemove){
-            projectiles.remove(projectile);
-        }
-    }
-    public void removeEnemyProjectiles(List<Projectile> ProjectilesRemove){
-        for (Projectile projectile : ProjectilesRemove){
-            enemyProjectiles.remove(projectile);
-        }
-    }
-
 
     public List<Enemy> updateKills() {
         List<Enemy> enemiesToRemove = new ArrayList<>();
         List<Projectile> projectilesToRemove = new ArrayList<>();
+        List<Shield> ShieldRemove = new ArrayList<>();
 
         for (Projectile projectile : projectiles) {
             projectile.update(); // Move the projectile
@@ -119,20 +110,32 @@ public class ArenaModel {
                     projectilesToRemove.add(projectile);
                     if (!enemy.isAlive()) {
                         enemiesToRemove.add(enemy);
-                        increaseScore(10); // Assuming each enemy is worth 10 points
+                        increaseScore(9); // Assuming each enemy is worth 10 points
                     }
                     break; // Break to avoid multiple collisions with the same projectile
+                }
+            }
+            for(Shield shield: shields){
+                if(projectile.getPosition().equals(shield.getPosition())){
+                    shield.takeDamage();
+                    projectilesToRemove.add(projectile);
+                    if(!shield.isAlive()){
+                        ShieldRemove.add(shield);
+                    }
+                    break;
                 }
             }
         }
 
         projectiles.removeAll(projectilesToRemove);
         enemyWave.getEnemies().removeAll(enemiesToRemove);
+        shields.removeAll(ShieldRemove);
         return enemiesToRemove;
     }
 
     public void updatePlayerHit(){
         List<Projectile> ProjectilesRemove = new ArrayList<>();
+        List<Shield> ShieldRemove = new ArrayList<>();
 
         for (Projectile projectile : enemyProjectiles){
             projectile.updateEnemyBullet();
@@ -145,7 +148,19 @@ public class ArenaModel {
                 ProjectilesRemove.add(projectile);
                 break;
             }
+            for(Shield shield: shields){
+                if(shield.getPosition().equals(projectile.getPosition())){
+                    shield.takeDamage();
+                    ProjectilesRemove.add(projectile);
+                    if(!shield.isAlive()){
+                        ShieldRemove.add(shield);
+                    }
+                    break;
+                }
+            }
         }
-        removeEnemyProjectiles(ProjectilesRemove);
+        enemyProjectiles.removeAll(ProjectilesRemove);
+        shields.removeAll(ShieldRemove);
     }
+
 }
