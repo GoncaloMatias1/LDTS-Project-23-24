@@ -36,6 +36,8 @@ public class ArenaController extends Controller<ArenaModel> {
         int shootime = 4;
         if (getModel().getEnemyWave().getEnemies().isEmpty()){
             getModel().setEnemyWave(new EnemyWave());
+            getModel().initializeShields(getModel().getWidth(), getModel().getHeight());
+            steps = 76;
         }
         if (!getModel().getPlayerShip().isAlive()) {
             GameOverModel gameOverModel = new GameOverModel();

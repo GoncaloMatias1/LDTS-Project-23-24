@@ -26,11 +26,6 @@ public class EnemyWave {
             chosenEnemy.turnToMisteryShip();
         }
     }
-    public void removeEnemies(List<Enemy> EnemiesRemove){
-        for (Enemy enemy : EnemiesRemove){
-            enemies.remove(enemy);
-        }
-    }
     public void draw(TextGraphics graphics){
         for (Enemy enemy : enemies){
             enemy.draw(graphics);

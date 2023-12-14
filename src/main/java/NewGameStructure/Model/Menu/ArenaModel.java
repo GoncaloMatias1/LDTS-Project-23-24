@@ -57,7 +57,8 @@ public class ArenaModel {
         enemyProjectiles.add(enemyWave.randomShot());
     }
 
-    private void initializeShields(int width, int height) {
+    public void initializeShields(int width, int height) {
+        shields.clear();
         int shieldSpacing = width / 6;
         int shieldY = height - 7;
         for (int i = 0; i < 5; i++) {

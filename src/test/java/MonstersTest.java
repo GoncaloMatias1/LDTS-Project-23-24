@@ -140,12 +140,6 @@ class MonstersTest {
         }
     }
 
-    @Test
-    void testEnemyRemoval() {
-        int initialSize = enemyWave.getEnemies().size();
-        enemyWave.removeEnemies(List.of(enemy));
-        assertEquals(initialSize - 1, enemyWave.getEnemies().size());
-    }
 
     @Test
     void testGameOverWhenEnemyReachesShield() {
