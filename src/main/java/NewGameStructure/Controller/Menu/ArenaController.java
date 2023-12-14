@@ -38,6 +38,8 @@ public class ArenaController extends Controller<ArenaModel> {
             getModel().setEnemyWave(new EnemyWave());
             getModel().initializeShields(getModel().getWidth(), getModel().getHeight());
             steps = 76;
+            hasToMoveDown = false;
+            hasToMoveRight = true;
         }
         if (!getModel().getPlayerShip().isAlive()) {
             GameOverModel gameOverModel = new GameOverModel();
