@@ -9,11 +9,21 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 public class Shield extends EntityModel {
     private TextCharacter shieldCharacter;
 
+    private static final TextColor[] LIFE_COLORS = {
+            new TextColor.RGB(0, 102, 51), // Dark green, for 1 life
+            new TextColor.RGB(0, 153, 0), // Medium green, for 2 lives
+            new TextColor.RGB(0, 204, 0), // Light green, for 3 lives
+            new TextColor.RGB(51, 255, 51),         // Bright green, for 4 lives
+    };
     public Shield(Position position) {
         super(position, 4, false); // Pass lives to the super constructor
-        this.shieldCharacter = new TextCharacter('#', TextColor.ANSI.GREEN, TextColor.ANSI.BLACK);
+        updateShieldCharacter();
     }
 
+    private void updateShieldCharacter() {
+        int colorIndex = Math.max(0, lives - 1);
+        shieldCharacter = new TextCharacter('#', LIFE_COLORS[colorIndex], TextColor.ANSI.BLACK);
+    }
     public void draw(TextGraphics graphics) {
         graphics.setCharacter(getPosition().getX(), getPosition().getY(), shieldCharacter);
     }
@@ -21,6 +31,7 @@ public class Shield extends EntityModel {
     public void takeDamage() {
         if (this.lives > 0) {
             this.lives--;
+            updateShieldCharacter();
         }
     }
 
