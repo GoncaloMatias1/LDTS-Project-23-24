@@ -16,7 +16,7 @@ public class Shield extends EntityModel {
             new TextColor.RGB(51, 255, 51),         // Bright green, for 4 lives
     };
     public Shield(Position position) {
-        super(position, 4, false); // Pass lives to the super constructor
+        super(position, 4, false);
         updateShieldCharacter();
     }
 

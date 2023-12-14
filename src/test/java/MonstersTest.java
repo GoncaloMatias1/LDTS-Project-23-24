@@ -28,7 +28,6 @@ class MonstersTest {
 
     @BeforeEach
     void setUp() throws IOException {
-        // Initialize the ArenaModel with the appropriate dimensions and entities
         arenaModel = new ArenaModel(100, 30);
         arenaController = new ArenaController(arenaModel);
 
@@ -38,13 +37,11 @@ class MonstersTest {
         enemyWave = new EnemyWave();
         enemyWave.getEnemies().add(enemy);
 
-        // Initialize an enemy wave and add it to the arena model
         enemyWave2 = arenaModel.getEnemyWave();
-        for (int i = 0; i < 5; i++) { // Assuming you want a few enemies for the test
+        for (int i = 0; i < 5; i++) {
             enemyWave2.getEnemies().add(new Enemy(5, i, 1, 10));
         }
 
-        // Set the last enemy's position to trigger game over
         Enemy lastEnemy = enemyWave2.getEnemies().get(enemyWave2.getEnemies().size() - 1);
         lastEnemy.getPosition().setY(arenaModel.getShields().get(0).getPosition().getY());
     }
@@ -85,16 +82,13 @@ class MonstersTest {
 
     @Test
     void testEnemyWaveMovementRight() {
-        // Store initial positions
         List<Position> initialPositions = enemyWave.getEnemies().stream()
                 .map(Enemy::getPosition)
                 .map(p -> new Position(p.getX(), p.getY()))
                 .collect(Collectors.toList());
 
-        // Move enemies right
         enemyWave.moveEnemiesRight();
 
-        // Check if all enemies have moved right by 1 position
         for (int i = 0; i < enemyWave.getEnemies().size(); i++) {
             Enemy enemy = enemyWave.getEnemies().get(i);
             Position initialPosition = initialPositions.get(i);
@@ -104,16 +98,13 @@ class MonstersTest {
 
     @Test
     void testEnemyWaveMovementLeft() {
-        // Store initial positions
         List<Position> initialPositions = enemyWave.getEnemies().stream()
                 .map(Enemy::getPosition)
                 .map(p -> new Position(p.getX(), p.getY()))
                 .collect(Collectors.toList());
 
-        // Move enemies left
         enemyWave.moveEnemiesLeft();
 
-        // Check if all enemies have moved left by 1 position
         for (int i = 0; i < enemyWave.getEnemies().size(); i++) {
             Enemy enemy = enemyWave.getEnemies().get(i);
             Position initialPosition = initialPositions.get(i);
@@ -123,16 +114,13 @@ class MonstersTest {
 
     @Test
     void testEnemyWaveMovementDown() {
-        // Store initial positions
         List<Position> initialPositions = enemyWave.getEnemies().stream()
                 .map(Enemy::getPosition)
                 .map(p -> new Position(p.getX(), p.getY()))
                 .collect(Collectors.toList());
 
-        // Move enemies down
         enemyWave.moveEnemiesDown();
 
-        // Check if all enemies have moved down by 1 position
         for (int i = 0; i < enemyWave.getEnemies().size(); i++) {
             Enemy enemy = enemyWave.getEnemies().get(i);
             Position initialPosition = initialPositions.get(i);
@@ -143,10 +131,8 @@ class MonstersTest {
 
     @Test
     void testGameOverWhenEnemyReachesShield() {
-        // Simulate the game loop step where the last enemy reaches the shield
-        arenaController.step(application, GUI.ACTION.NONE); // Replace with a non-null action if necessary
+        arenaController.step(application, GUI.ACTION.NONE);
 
-        // Verify that the application's setState method was called with a GameOverState instance
         verify(application).setState(any(GameOverState.class));
     }
 }
