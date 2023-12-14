@@ -52,7 +52,6 @@ public class MainMenuView extends View<MainMenuModel> {
             String[] lines2 = drawArt.split("\n");
             int startYdraw = 20; // Start Y position for the title
 
-            // Draw each line of the ASCII art
             for (int i = 0; i < lines2.length; i++) {
                 graphics.putString(width / 2 - lines2[i].length() / 2 - 25, startYdraw + i, lines2[i]);
             }
@@ -89,14 +88,12 @@ public class MainMenuView extends View<MainMenuModel> {
                             "           |  |        \n"+
                             "           |  |        \n";
 
-            // Set color to orange for drawAlien1
             TextColor orange = new TextColor.RGB(255, 165, 0); // RGB value for orange
             graphics.setForegroundColor(orange); // Set the color to orange
 
             String[] lines3 = drawAlien1.split("\n");
             int startYalien = 19; // Start Y position for the title
 
-            // Draw each line of the ASCII art
             for (int i = 0; i < lines3.length; i++) {
                 graphics.putString(width / 2 - lines3[i].length() / 2 + 20, startYalien + i, lines3[i]);
             }
@@ -115,13 +112,11 @@ public class MainMenuView extends View<MainMenuModel> {
                             "           |  |        \n"+
                             "           |  |        \n";
 
-            // Set color to red for drawAlien2
-            graphics.setForegroundColor(TextColor.ANSI.RED); // Set the color to orange
+            graphics.setForegroundColor(TextColor.ANSI.RED);
 
             String[] lines4 = drawAlien2.split("\n");
-            int startYalien2 = 19; // Start Y position for the title
+            int startYalien2 = 19;
 
-            // Draw each line of the ASCII art
             for (int i = 0; i < lines4.length; i++) {
                 graphics.putString(width / 2 - lines4[i].length() / 2 + 39, startYalien2 + i, lines4[i]);
             }
