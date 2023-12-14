@@ -32,7 +32,7 @@ public class ArenaController extends Controller<ArenaModel> {
 
     @Override
     public void step(Application application, GUI.ACTION action) {
-        int time = 4;
+        int time = 10;
         int shootime = 4;
         if (getModel().getEnemyWave().getEnemies().isEmpty()){
             getModel().setEnemyWave(new EnemyWave());
