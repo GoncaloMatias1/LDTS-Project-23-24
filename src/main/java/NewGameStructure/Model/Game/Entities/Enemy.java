@@ -28,7 +28,7 @@ public class Enemy extends EntityModel {
     }
 
     public void draw(TextGraphics graphics) {
-        if (pointsAward == 30){
+        if (pointsAward == 50){
             graphics.setCharacter(position.getX(), position.getY(), 'M');
         }
         else graphics.setCharacter(position.getX(), position.getY(), 'W');

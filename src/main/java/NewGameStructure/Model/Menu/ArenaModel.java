@@ -164,4 +164,7 @@ public class ArenaModel {
         shields.removeAll(ShieldRemove);
     }
 
+    public void setEnemyWave(EnemyWave enemyWave) {
+        this.enemyWave = enemyWave;
+    }
 }
