@@ -38,7 +38,6 @@ public class Enemy extends EntityModel {
     }
 
     public Projectile shoot() {
-        // Assuming the projectile spawns under the enemy
         return new Projectile(getPosition().getX(), getPosition().getY() + 1);
     }
 }

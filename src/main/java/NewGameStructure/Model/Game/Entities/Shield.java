@@ -28,5 +28,4 @@ public class Shield extends EntityModel {
         return this.lives > 0;
     }
 
-    // Other methods...
 }

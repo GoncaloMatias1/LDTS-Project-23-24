@@ -35,11 +35,9 @@ public class MainMenuView extends View<MainMenuModel> {
                             "           | |                                                                                \n" +
                             "           |_|                                                                                \n";
 
-            // Split the ASCII art into lines
             String[] lines = titleArt.split("\n");
-            int startY = 2; // Start Y position for the title
+            int startY = 2;
 
-            // Draw each line of the ASCII art
             for (int i = 0; i < lines.length; i++) {
                 graphics.putString(width / 2 - lines[i].length() / 2, startY + i, lines[i]);
             }
@@ -52,8 +50,7 @@ public class MainMenuView extends View<MainMenuModel> {
                 graphics.putString(new TerminalPosition(width / 2 - getModel().getMenuItems()[i].length() / 2, height / 2 + i * 2), getModel().getMenuItems()[i]);
             }
 
-            // Draw the selector
-            graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF00")); // Yellow color for selector
+            graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF00")); // Yellow color
             graphics.putString(new TerminalPosition(getModel().getSelectorPos().getX(), getModel().getSelectorPos().getY()), ">>");
             getModel().getSelectorPos().setY(height / 2 + getModel().getSelectedItem() * 2);
         } catch (Exception e) {

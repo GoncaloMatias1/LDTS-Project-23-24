@@ -6,7 +6,7 @@ public class Health {
 
     public Health(int maxHealth) {
         this.maxHealth = maxHealth;
-        this.currentHealth = maxHealth; // A saúde começa no máximo por padrão.
+        this.currentHealth = maxHealth; // A saúde começa no máximo
     }
 
     public void takeDamage(int damage) {
