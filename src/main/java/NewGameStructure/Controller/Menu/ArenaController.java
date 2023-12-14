@@ -34,6 +34,8 @@ public class ArenaController extends Controller<ArenaModel> {
     public void step(Application application, GUI.ACTION action) {
         int time = 10;
         int shootime = 4;
+
+        // Enemy respawn
         if (getModel().getEnemyWave().getEnemies().isEmpty()){
             getModel().setEnemyWave(new EnemyWave());
             getModel().initializeShields(getModel().getWidth(), getModel().getHeight());
@@ -41,16 +43,22 @@ public class ArenaController extends Controller<ArenaModel> {
             hasToMoveDown = false;
             hasToMoveRight = true;
         }
+
+        // The two conditions to losing:
+        // 0 lives
         if (!getModel().getPlayerShip().isAlive()) {
             GameOverModel gameOverModel = new GameOverModel();
             gameOverModel.setCurrentScore(getModel().getScore());
             application.setState(new GameOverState(gameOverModel));
         }
+        // Aliens reach shields
         if (getModel().getEnemyWave().getEnemies().get(getModel().getEnemyWave().getEnemies().size() - 1).getPosition().getY() == gameOverArea) {
             GameOverModel gameOverModel = new GameOverModel();
             gameOverModel.setCurrentScore(getModel().getScore());
             application.setState(new GameOverState(gameOverModel));
         }
+
+        // Enemy wave movement and shooting pattern
         if (cooldown == time) {
             getModel().enemyShoot();
             cooldown = 0;
@@ -75,10 +83,13 @@ public class ArenaController extends Controller<ArenaModel> {
                 hasToMoveDown = false;
             }
         } else cooldown++;
+
+        // Update for entity statuses
         List<Enemy> killedEnemies = getModel().updateKills();
         getModel().increaseScore(killedEnemies.size());
         getModel().updatePlayerHit();
 
+        // Player controls:
         switch (action) {
             case RIGHT:
                 getModel().movePlayerShipRight();
@@ -93,6 +104,7 @@ public class ArenaController extends Controller<ArenaModel> {
                 }
                 break;
         }
+        // Cooldown between shots
         if (shootCooldown != shootime){
             shootCooldown++;
         }
