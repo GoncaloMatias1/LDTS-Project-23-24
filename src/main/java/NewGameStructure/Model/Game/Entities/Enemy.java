@@ -3,6 +3,7 @@ package NewGameStructure.Model.Game.Entities;
 import NewGameStructure.Model.Game.EntityModel;
 import NewGameStructure.Model.Game.Projectile;
 import NewGameStructure.Position;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Enemy extends EntityModel {
@@ -29,9 +30,13 @@ public class Enemy extends EntityModel {
 
     public void draw(TextGraphics graphics) {
         if (pointsAward == 50){
+            graphics.setForegroundColor(TextColor.ANSI.RED);
             graphics.setCharacter(position.getX(), position.getY(), 'M');
         }
-        else graphics.setCharacter(position.getX(), position.getY(), 'W');
+        else {
+            graphics.setForegroundColor(TextColor.ANSI.YELLOW);
+            graphics.setCharacter(position.getX(), position.getY(), 'W');
+        }
 
     }
 

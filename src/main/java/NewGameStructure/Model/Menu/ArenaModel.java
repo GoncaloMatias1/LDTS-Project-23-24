@@ -59,7 +59,7 @@ public class ArenaModel {
 
     private void initializeShields(int width, int height) {
         int shieldSpacing = width / 6;
-        int shieldY = height - 10;
+        int shieldY = height - 7;
         for (int i = 0; i < 5; i++) {
             for (int j = -1; j<2; j++) {
                 shields.add(new Shield(new Position((10 + i * shieldSpacing + shieldSpacing / 2) + j, shieldY)));
