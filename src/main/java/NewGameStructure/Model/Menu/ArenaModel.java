@@ -111,7 +111,7 @@ public class ArenaModel {
                     projectilesToRemove.add(projectile);
                     if (!enemy.isAlive()) {
                         enemiesToRemove.add(enemy);
-                        increaseScore(9);
+                        increaseScore(enemy.getPointsAward() -1);
                     }
                     break;
                 }
