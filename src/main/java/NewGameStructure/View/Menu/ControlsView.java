@@ -24,7 +24,6 @@ public class ControlsView extends View<ControlsModel> {
         String text = " Press 'A' or Left Arrow Key to move the spaceship left.\n" +
                 "Press 'D' or Right Arrow Key to move the spaceship right.\n" +
                 "Press 'Spacebar' to shoot lasers at the invaders.\n" +
-                "Press 'P' to pause the game and resume.\n" +
                 "Destroy all invaders before they reach the bottom of the screen.\n" +
                 "Earn points for each invader you destroy. Bonus points for shooting mystery ships.\n" +
                 "You start with 3 lives. Losing all lives ends the game.\n" +

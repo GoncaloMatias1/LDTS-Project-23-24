@@ -3,9 +3,11 @@ package NewGameStructure.Controller.Menu;
 import NewGameStructure.Application;
 import NewGameStructure.Controller.Controller;
 import NewGameStructure.GUI;
+import NewGameStructure.Model.Game.EnemyWave;
 import NewGameStructure.Model.Game.Entities.Enemy;
 import NewGameStructure.Model.Menu.ArenaModel;
 import NewGameStructure.Model.Menu.GameOverModel;
+import NewGameStructure.States.Menu.ArenaState;
 import NewGameStructure.States.Menu.GameOverState;
 
 import java.util.List;
@@ -32,6 +34,9 @@ public class ArenaController extends Controller<ArenaModel> {
     public void step(Application application, GUI.ACTION action) {
         int time = 4;
         int shootime = 4;
+        if (getModel().getEnemyWave().getEnemies().isEmpty()){
+            getModel().setEnemyWave(new EnemyWave());
+        }
         if (!getModel().getPlayerShip().isAlive()) {
             GameOverModel gameOverModel = new GameOverModel();
             gameOverModel.setCurrentScore(getModel().getScore()); // currentScore should be the score from the current game session

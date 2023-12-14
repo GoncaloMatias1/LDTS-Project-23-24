@@ -4,7 +4,7 @@ import NewGameStructure.Position;
 
 public abstract class EntityModel {
     protected Position position;
-    protected int lives; // Use lives instead of Health
+    protected int lives;
     protected boolean isEnemy;
 
     protected int minX; // Left boundary
@@ -12,11 +12,10 @@ public abstract class EntityModel {
 
     public EntityModel(Position position, int lives, boolean isEnemy) {
         this.position = position;
-        this.lives = lives; // Initialize with the given number of lives
+        this.lives = lives;
         this.isEnemy = isEnemy;
     }
 
-    // Getters and setters for position and lives...
     public Position getPosition() {
         return position;
     }
@@ -48,5 +47,4 @@ public abstract class EntityModel {
         return isEnemy;
     }
 
-    // Other methods...
 }

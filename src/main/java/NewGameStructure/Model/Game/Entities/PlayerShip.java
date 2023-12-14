@@ -12,10 +12,10 @@ public class PlayerShip extends EntityModel {
 
 
     public PlayerShip(int startX, int startY, int screenWidth, int initialLives) {
-        super(new Position(startX, startY), initialLives, false); // Added initialLives and false for isEnemy
+        super(new Position(startX, startY), initialLives, false);
         this.shipCharacter = new TextCharacter('^', TextColor.ANSI.WHITE, TextColor.ANSI.BLACK);
-        this.minX = 1; // Assuming the border is 1 character thick
-        this.maxX = screenWidth - 2; // Adjusted for 1 character thick border
+        this.minX = 1;
+        this.maxX = screenWidth - 2;
     }
 
     public void draw(TextGraphics graphics) {
@@ -24,12 +24,9 @@ public class PlayerShip extends EntityModel {
 
 
     public Projectile shoot() {
-        // Assuming the projectile spawns above the ship
         return new Projectile(getPosition().getX(), getPosition().getY() - 1);
     }
 
-    // Additional methods for handling lives can be implemented here.
-    // Example:
     public void loseLife() {
         if (lives > 0) {
             lives--;

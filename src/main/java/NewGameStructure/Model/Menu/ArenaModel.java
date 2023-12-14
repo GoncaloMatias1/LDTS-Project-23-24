@@ -22,7 +22,7 @@ public class ArenaModel {
     public ArenaModel(int width, int height) {
         this.width = width;
         this.height = height;
-        this.playerShip = new PlayerShip(width / 2, height - 3, width, 3); // 3 for initial lives
+        this.playerShip = new PlayerShip(width / 2, height - 3, width, 3);
         initializeShields(width, height);
     }
 
@@ -58,8 +58,8 @@ public class ArenaModel {
     }
 
     private void initializeShields(int width, int height) {
-        int shieldSpacing = width / 6; // Example spacing value
-        int shieldY = height - 10; // Example Y position, adjust as needed
+        int shieldSpacing = width / 6;
+        int shieldY = height - 10;
         for (int i = 0; i < 5; i++) {
             for (int j = -1; j<2; j++) {
                 shields.add(new Shield(new Position((10 + i * shieldSpacing + shieldSpacing / 2) + j, shieldY)));
@@ -84,7 +84,6 @@ public class ArenaModel {
         return enemyProjectiles;
     }
 
-    // Method to handle player's life loss
     public void playerHit() {
         this.playerShip.loseLife();
         if (this.playerShip.getLives() <= 0) {
@@ -112,9 +111,9 @@ public class ArenaModel {
                     projectilesToRemove.add(projectile);
                     if (!enemy.isAlive()) {
                         enemiesToRemove.add(enemy);
-                        increaseScore(9); // Assuming each enemy is worth 10 points
+                        increaseScore(enemy.getPointsAward() -1);
                     }
-                    break; // Break to avoid multiple collisions with the same projectile
+                    break;
                 }
             }
             for(Shield shield: shields){
@@ -165,4 +164,7 @@ public class ArenaModel {
         shields.removeAll(ShieldRemove);
     }
 
+    public void setEnemyWave(EnemyWave enemyWave) {
+        this.enemyWave = enemyWave;
+    }
 }

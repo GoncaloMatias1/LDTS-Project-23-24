@@ -15,7 +15,7 @@ class ProjectileTest {
     void setUp() {
         // Setup initial positions for the projectile, enemy, and playerShip
         projectile = new Projectile(5, 5);
-        Enemy enemy = new Enemy(5, 4, 3); // Example: starting at (5,4) with 3 lives
+        Enemy enemy = new Enemy(5, 4, 3, 10); // Example: starting at (5,4) with 3 lives
         playerShip = new PlayerShip(5, 6,80,3);
     }
 
@@ -34,7 +34,7 @@ class ProjectileTest {
     @Test
     void testProjectileEnemyCollision() {
         // Instantiate enemy with starting position (5, 4) and initial lives (for example, 3)
-        Enemy enemy = new Enemy(5, 4, 3);
+        Enemy enemy = new Enemy(5, 4, 3, 10);
 
         // Update the projectile's position to test the collision
         projectile.update();

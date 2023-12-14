@@ -50,16 +50,16 @@ public class GameOverView extends View<GameOverModel> {
                 graphics.putString(new TerminalPosition(width / 2 - getModel().getMenuItems()[i].length() / 2, height / 2 + i * 2), getModel().getMenuItems()[i]);
             }
 
-            // Draw current score
+
             String currentScoreText = "Your Score: " + getModel().getCurrentScore();
-            gui.getGraphics().putString(new TerminalPosition(15, 25), currentScoreText); // Adjust position as needed
+            gui.getGraphics().putString(new TerminalPosition(15, 25), currentScoreText);
 
-            // Draw high score
+
             String highScoreText = "High Score: " + getModel().getHighScore();
-            gui.getGraphics().putString(new TerminalPosition(70, 25), highScoreText); // Adjust position as needed
+            gui.getGraphics().putString(new TerminalPosition(70, 25), highScoreText);
 
-            // Draw the selector
-            graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF00")); // Yellow color for selector
+
+            graphics.setForegroundColor(TextColor.Factory.fromString("#FFFF00")); // Yellow
             graphics.putString(new TerminalPosition(getModel().getSelectorPos().getX()-2, getModel().getSelectorPos().getY()), ">>");
             getModel().getSelectorPos().setY(height / 2 + getModel().getSelectedItem() * 2);
         } catch (Exception e) {

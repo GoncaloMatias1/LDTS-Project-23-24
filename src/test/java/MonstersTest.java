@@ -34,14 +34,14 @@ class MonstersTest {
 
         application = mock(Application.class);
 
-        enemy = new Enemy(5, 5, 1);
+        enemy = new Enemy(5, 5, 1, 10);
         enemyWave = new EnemyWave();
         enemyWave.getEnemies().add(enemy);
 
         // Initialize an enemy wave and add it to the arena model
         enemyWave2 = arenaModel.getEnemyWave();
         for (int i = 0; i < 5; i++) { // Assuming you want a few enemies for the test
-            enemyWave2.getEnemies().add(new Enemy(5, i, 1));
+            enemyWave2.getEnemies().add(new Enemy(5, i, 1, 10));
         }
 
         // Set the last enemy's position to trigger game over

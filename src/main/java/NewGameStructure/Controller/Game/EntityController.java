@@ -25,8 +25,6 @@ public class EntityController {
                 }
             }
         }
-        // Remove projectiles that have gone off-screen or hit an enemy
-        // Update enemy positions or behaviors
     }
 
 

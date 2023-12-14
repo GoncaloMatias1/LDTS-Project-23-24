@@ -21,37 +21,28 @@ public class ArenaView extends View<ArenaModel> {
         TextGraphics graphics = gui.getGraphics();
         gui.getScreen().clear();
 
-        // Draw arena boundaries
         drawBoundaries(graphics);
 
-        // Draw player lives as hearts
         drawLives(graphics);
 
-        // Draw the player ship
         getModel().getPlayerShip().draw(graphics);
 
-        // Draw projectiles
         for (Projectile projectile : getModel().getProjectiles()) {
             projectile.draw(graphics);
         }
 
-        // Draw enemy projectiles
         for (Projectile projectile : getModel().getEnemyProjectiles()) {
             projectile.draw(graphics);
         }
 
-        // Draw shields
         for (Shield shield : getModel().getShields()) {
             shield.draw(graphics);
         }
 
-        // Draw enemies
         getModel().getEnemyWave().draw(graphics);
 
-        // Draw the score
         drawScore(graphics);
 
-        // Refresh the screen to display the latest drawings
         try {
             gui.getScreen().refresh();
         } catch (IOException e) {
@@ -68,27 +59,27 @@ public class ArenaView extends View<ArenaModel> {
     }
 
     private void drawLives(TextGraphics graphics) {
-        int startX = 2; // Set the X position where the lives display starts
-        int startY = 1; // Set the Y position slightly lower on the screen
+        int startX = 2;
+        int startY = 1;
 
         graphics.putString(new TerminalPosition(startX, startY), "LIVES", SGR.BOLD);
-        startX += 6; // Move the start position for the hearts to the right after the text
+        startX += 6;
 
-        String heart = "\u2665"; // This is the Unicode character for a heart
+        String heart = "\u2665";
         graphics.setForegroundColor(TextColor.ANSI.RED);
-        graphics.enableModifiers(SGR.BOLD); // Bold makes the heart larger
+        graphics.enableModifiers(SGR.BOLD);
 
-        int lives = getModel().getPlayerShip().getLives(); // Get the number of lives from our player ship model
+        int lives = getModel().getPlayerShip().getLives();
         for (int i = 0; i < lives; i++) {
-            graphics.putString(new TerminalPosition(startX + i * 4, startY), heart); // Draw hearts with spacing
+            graphics.putString(new TerminalPosition(startX + i * 4, startY), heart);
         }
-        graphics.disableModifiers(SGR.BOLD); // Reset to normal text for other drawings
+        graphics.disableModifiers(SGR.BOLD);
     }
 
     private void drawScore(TextGraphics graphics) {
-        String scoreText = "Score: " + getModel().getScore(); // Get the current score from the model
-        int scorePosX = getModel().getWidth() - scoreText.length() - 2; // Calculate X position for score
-        int scorePosY = 1; // Y position for score (same as lives for alignment)
+        String scoreText = "Score: " + getModel().getScore();
+        int scorePosX = getModel().getWidth() - scoreText.length() - 2;
+        int scorePosY = 1;
         graphics.putString(new TerminalPosition(scorePosX, scorePosY), scoreText, SGR.BOLD);
     }
 }

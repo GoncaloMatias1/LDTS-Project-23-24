@@ -16,9 +16,14 @@ public class EnemyWave {
     public EnemyWave(){
         for (int i = 5; i<=11; i=i+3){
             for (int j = 1; j<=76; j=j+5){
-                Enemy newenemy = new Enemy(j, i, 1);
+                Enemy newenemy = new Enemy(j, i, 1, 10);
                 enemies.add(newenemy);
             }
+        }
+        for (int i = 0; i<3; i++){
+            Random rand = new Random();
+            Enemy chosenEnemy = enemies.get(rand.nextInt(enemies.size()));
+            chosenEnemy.turnToMisteryShip();
         }
     }
     public void removeEnemies(List<Enemy> EnemiesRemove){

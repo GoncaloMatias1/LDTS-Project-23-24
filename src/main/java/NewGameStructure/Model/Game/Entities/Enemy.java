@@ -6,8 +6,10 @@ import NewGameStructure.Position;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Enemy extends EntityModel {
-    public Enemy(int startX, int startY, int initialLives){
+    private int pointsAward;
+    public Enemy(int startX, int startY, int initialLives, int pointsAward){
         super(new Position(startX, startY), initialLives, true);
+        this.pointsAward = pointsAward;
     }
 
     public void moveLeft() {
@@ -26,7 +28,11 @@ public class Enemy extends EntityModel {
     }
 
     public void draw(TextGraphics graphics) {
-        graphics.setCharacter(position.getX(), position.getY(), 'W'); //projectile character
+        if (pointsAward == 50){
+            graphics.setCharacter(position.getX(), position.getY(), 'M');
+        }
+        else graphics.setCharacter(position.getX(), position.getY(), 'W');
+
     }
 
     public boolean isAlive() {
@@ -38,7 +44,14 @@ public class Enemy extends EntityModel {
     }
 
     public Projectile shoot() {
-        // Assuming the projectile spawns under the enemy
         return new Projectile(getPosition().getX(), getPosition().getY() + 1);
+    }
+    public int getPointsAward(){
+        return pointsAward;
+    }
+
+    public void turnToMisteryShip(){
+        lives = 3;
+        pointsAward = 50;
     }
 }
