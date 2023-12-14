@@ -1,8 +1,7 @@
 package NewGameStructure.View.Menu;
 
 import NewGameStructure.GUI;
-import NewGameStructure.Model.Game.Entities.PlayerShip;
-import NewGameStructure.Model.Game.Entities.Projectile;
+import NewGameStructure.Model.Game.Projectile;
 import NewGameStructure.Model.Game.Entities.Shield;
 import NewGameStructure.Model.Menu.ArenaModel;
 import NewGameStructure.View.View;

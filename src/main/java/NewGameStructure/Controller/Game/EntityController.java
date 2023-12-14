@@ -2,7 +2,7 @@ package NewGameStructure.Controller.Game;
 
 
 import NewGameStructure.Model.Game.Entities.Enemy;
-import NewGameStructure.Model.Game.Entities.Projectile;
+import NewGameStructure.Model.Game.Projectile;
 import NewGameStructure.Position;
 import NewGameStructure.Model.Game.EntityModel;
 

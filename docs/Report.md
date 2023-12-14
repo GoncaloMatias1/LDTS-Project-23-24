@@ -8,7 +8,8 @@ Developed by Gonçalo Barroso (up202207832@fe.up.pt), Gonçalo Matias (up2021087
 - **Movement Mechanics:** Players can move their character left or right, and aliens will move accordingly.
 - **Shooting Mechanism:** Players shoot projectiles using the spacebar, while enemies fire at set intervals.
 - **Bullet Collision:** Projectiles will disappear upon hitting an enemy or another bullet, with corresponding damage to the targets.
-- **Lives Display:** Player's remaining lives shown in the screen's bottom left corner.
+- **Lives Display:** Player's remaining lives shown in the screen's upper left corner.
+- **Score Display:** Player's score shown in the screen's upper right corner.
 
 ### Design
 
