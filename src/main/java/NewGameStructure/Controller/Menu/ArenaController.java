@@ -33,10 +33,14 @@ public class ArenaController extends Controller<ArenaModel> {
         int time = 4;
         int shootime = 4;
         if (!getModel().getPlayerShip().isAlive()) {
-            application.setState(new GameOverState(new GameOverModel()));
+            GameOverModel gameOverModel = new GameOverModel();
+            gameOverModel.setCurrentScore(getModel().getScore()); // currentScore should be the score from the current game session
+            application.setState(new GameOverState(gameOverModel));
         }
         if (getModel().getEnemyWave().getEnemies().get(getModel().getEnemyWave().getEnemies().size() - 1).getPosition().getY() == gameOverArea) {
-            application.setState(new GameOverState(new GameOverModel()));
+            GameOverModel gameOverModel = new GameOverModel();
+            gameOverModel.setCurrentScore(getModel().getScore()); // currentScore should be the score from the current game session
+            application.setState(new GameOverState(gameOverModel));
         }
         if (cooldown == time) {
             getModel().enemyShoot();
