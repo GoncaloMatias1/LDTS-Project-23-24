@@ -7,6 +7,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
+
 
 class GameOverTest {
 
@@ -41,5 +44,25 @@ class GameOverTest {
         }
         controller.step(application, GUI.ACTION.ENTER);
         verify(application).setState(null);
+    }
+
+    @Test
+    public void whenEnterPressedOnStartAgain_shouldTransitionToMainMenuState() {
+        // Simulate pressing 'UP' until the "START AGAIN" option is selected
+        while (model.getSelectedItem() != 0) {
+            controller.step(application, GUI.ACTION.UP);
+        }
+        controller.step(application, GUI.ACTION.ENTER);
+        verify(application).setState(any(MainMenuState.class));
+    }
+
+    @Test
+    public void whenEnterPressedOnQuit_shouldTerminateApplication() {
+        // Simulate pressing 'DOWN' until the "QUIT" option is selected
+        while (model.getSelectedItem() != 1) {
+            controller.step(application, GUI.ACTION.DOWN);
+        }
+        controller.step(application, GUI.ACTION.ENTER);
+        verify(application).setState(null); // The application should set its state to null before stopping
     }
 }

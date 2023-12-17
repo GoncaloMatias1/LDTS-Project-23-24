@@ -1,7 +1,16 @@
 import NewGameStructure.Model.Game.Entities.PlayerShip;
+import NewGameStructure.Model.Game.Projectile;
+import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 
 class PlayerShipTest {
 
@@ -9,8 +18,15 @@ class PlayerShipTest {
     private final int screenWidth = 80;
     private final int initialLives = 3;
 
+    @Mock
+    private TextGraphics mockGraphics;
+
+    @Mock
+    private Projectile mockProjectile;
+
     @BeforeEach
     void setUp() {
+        MockitoAnnotations.openMocks(this);
         playerShip = new PlayerShip(screenWidth / 2, 20, screenWidth, initialLives);
     }
 
@@ -46,5 +62,22 @@ class PlayerShipTest {
     void isAlive_WhenLivesZero_ShouldReturnFalse() {
         playerShip.setLives(0);
         assertFalse(playerShip.isAlive(), "Player should not be alive when lives are zero");
+    }
+
+    @Test
+    void draw_ShouldInvokeGraphicsSetCharacter() {
+        playerShip.draw(mockGraphics);
+        verify(mockGraphics).setCharacter(anyInt(), anyInt(), any(TextCharacter.class));
+    }
+
+    @Test
+    void shoot_ShouldCreateProjectileAtCorrectPosition() {
+        // Act
+        var projectile = playerShip.shoot();
+
+        // Assert
+        assertNotNull(projectile, "Shoot should create a new projectile");
+        assertEquals(playerShip.getPosition().getX(), projectile.getPosition().getX(), "Projectile X should match player ship's X");
+        assertEquals(playerShip.getPosition().getY() - 1, projectile.getPosition().getY(), "Projectile should be just above the player ship");
     }
 }
