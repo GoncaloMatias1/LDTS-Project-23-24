@@ -1,3 +1,5 @@
+package Model;
+
 import NewGameStructure.Model.Game.Entities.Enemy;
 import NewGameStructure.Model.Game.Entities.PlayerShip;
 import NewGameStructure.Model.Game.Projectile;

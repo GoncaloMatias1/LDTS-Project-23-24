@@ -1,3 +1,5 @@
+package Model;
+
 import NewGameStructure.Model.Game.Entities.PlayerShip;
 import NewGameStructure.Model.Game.Projectile;
 import com.googlecode.lanterna.TextCharacter;

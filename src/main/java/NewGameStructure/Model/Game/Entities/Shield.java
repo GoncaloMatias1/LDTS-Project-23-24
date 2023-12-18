@@ -39,4 +39,9 @@ public class Shield extends EntityModel {
         return this.lives > 0;
     }
 
+    public TextCharacter getShieldCharacter() {
+        return shieldCharacter;
+    }
+
+
 }

@@ -1,3 +1,5 @@
+package Model;
+
 import NewGameStructure.Application;
 import NewGameStructure.Controller.Menu.GameOverController;
 import NewGameStructure.GUI;
