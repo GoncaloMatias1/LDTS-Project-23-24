@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id 'info.solidsoft.pitest' version '1.6.0'
 }
 
 group = "com.goncalomatias1.l05gr06"
@@ -20,4 +21,8 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+pitest {
+    junit5PluginVersion = '0.12'
 }
