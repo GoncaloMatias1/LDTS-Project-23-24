@@ -1,89 +1,53 @@
-## Space Invaders Project - LDTS 2023/24
+### Space Invaders Project - LDTS 2023/24
 
 Developed by Gonçalo Barroso (up202207832@fe.up.pt), Gonçalo Matias (up202108703@fe.up.pt), and Rodrigo Arteiro (up202108749@fe.up.pt), this project is an engaging reimagining of the classic Space Invaders game. The player maneuvers a laser cannon across the screen's bottom, aiming and firing at overhead aliens. These aliens, arranged in five rows of eleven, shift left and right in unison, moving down each time they reach the screen's edge.
 
-## CONTROLS:
+### Controls:
 
-### MOVEMENT
+#### MOVEMENT
 - **MOVE LEFT** – Press 'A' or Left Arrow Key
 - **MOVE RIGHT** – Press 'D' or Right Arrow Key
 
-### SHOOTING
+#### SHOOTING
 - **SHOOT LASERS** – Press 'Spacebar'
 
-### GAME CONTROLS
+#### GAME CONTROLS
 - **PAUSE/RESUME GAME** – Press 'P'
 
-### OBJECTIVE
+#### OBJECTIVE
 - Destroy all invaders before they reach the bottom of the screen.
 - Earn points for each invader destroyed. Bonus points for shooting mystery ships.
 
-### LIVES
+#### LIVES
 - You start with 3 lives. Losing all lives ends the game.
 
-### TIPS
+#### TIPS
 - Move quickly and shoot accurately. Use cover wisely.
 
 ![img_1.png](img_1.png)
 
----
 
-### MAIN MENU AND SELECT LEVEL MENU DEMONSTRATION
+### Screeshots
 
-![img.png](img.png)
+#### In Game
 
-### MAIN SCREEN WHILE PLAYING
+![ezgif.com-video-to-gif-converted-2.gif](..%2F..%2F..%2FDownloads%2Fezgif.com-video-to-gif-converted-2.gif)
 
-...
+#### Menu
 
----
+![img_3.png](img_3.png)
 
-### Current Implementation
+#### Features
 
-Our current codebase consists of two structures: an older version with partial implementation and a new version employing our chosen design patterns. Some features from the old structure are yet to be integrated into the new one. Consequently, the new version currently displays only a black screen. The older version, although not aligned with our design goals, already has some functioning features.
+Shield gets darker when hited.
 
-### Upcoming Features
+![ezgif.com-video-to-gif-converted-3.gif](..%2F..%2F..%2FDownloads%2Fezgif.com-video-to-gif-converted-3.gif)
 
-- **Game Over Screen:** Triggered when aliens reach the bottom or the player loses all lives.
-- **Movement Mechanics:** Players can move their character left or right, and aliens will move accordingly.
-- **Shooting Mechanism:** Players shoot projectiles using the spacebar, while enemies fire at set intervals.
-- **Bullet Collision:** Projectiles will disappear upon hitting an enemy or another bullet, with corresponding damage to the targets.
-- **Lives Display:** Player's remaining lives shown in the screen's bottom left corner.
+Monster dead animation.
 
-### Mockup of the Game in Arena
+![ezgif.com-video-to-gif-converted-4.gif](..%2F..%2F..%2FDownloads%2Fezgif.com-video-to-gif-converted-4.gif)
 
-![](resources/Mockup1.png)
+### Game end (Game Over)
 
-### Design Overview
+![img_2.png](img_2.png)
 
-#### Structure
-
-**Context:** A cohesive game structure was required.
-
-**Solution:** Implementation of the **Model-View-Controller (MVC)** pattern to segregate interfaces, controls, and computational methods into distinct classes.
-
-**Benefits:**
-- Streamlined, less complex individual classes.
-- Simplified integration of future enhancements.
-
-#### State Management
-
-**Context:** The game transitions through various states like Main Menu, Arena, Game Over, and Controls screen.
-
-**Solution:** Adoption of the **State** pattern, allowing the Application class to reference only the superclass of each state.
-
-**Benefits:**
-- Facilitates the addition of new states.
-- Reduces redundant code.
-
-#### Entity Management
-
-**Context:** Various game entities share common methods.
-
-**Solution:** Utilization of the **Factory** pattern, enabling subclasses to inherit common methods without reimplementation.
-
-**Implementation Goal:** To create subclasses for Monster, PlayerShip, and Bullet under the Entity class.
-
-**Benefits:**
-- Streamlines the addition of new subclasses.
-- Minimizes overall code redundancy.
