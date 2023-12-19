@@ -1,4 +1,4 @@
-package com.goncalomatias1.l05gr06.Model;
+package com.goncalomatias1.l05gr06.Model.Game.Entities;
 
 import com.goncalomatias1.l05gr06.Model.Game.Entities.PlayerShip;
 import com.goncalomatias1.l05gr06.Model.Game.Projectile;

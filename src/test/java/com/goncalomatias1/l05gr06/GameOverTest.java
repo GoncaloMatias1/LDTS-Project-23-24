@@ -1,4 +1,4 @@
-package com.goncalomatias1.l05gr06.Model;
+package com.goncalomatias1.l05gr06;
 
 import com.goncalomatias1.l05gr06.Application;
 import com.goncalomatias1.l05gr06.Controller.Menu.GameOverController;

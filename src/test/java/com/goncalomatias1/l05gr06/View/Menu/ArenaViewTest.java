@@ -1,4 +1,4 @@
-package com.goncalomatias1.l05gr06.View;
+package com.goncalomatias1.l05gr06.View.Menu;
 
 import static org.mockito.Mockito.*;
 
