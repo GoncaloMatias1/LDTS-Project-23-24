@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id 'info.solidsoft.pitest' version '1.6.0'
+    id 'info.solidsoft.pitest' version '1.15.0'
 }
 
 group = "com.goncalomatias1.l05gr06"
@@ -24,5 +24,7 @@ tasks.test {
 }
 
 pitest {
-    junit5PluginVersion = '0.12'
+    pitestVersion = '1.15.0' //not needed when a default PIT version should be used
+    threads = 4
+    timestampedReports = false
 }
