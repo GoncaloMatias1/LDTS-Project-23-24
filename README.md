@@ -11,9 +11,6 @@ Developed by Gonçalo Barroso (up202207832@fe.up.pt), Gonçalo Matias (up2021087
 #### SHOOTING
 - **SHOOT LASERS** – Press 'Spacebar'
 
-#### GAME CONTROLS
-- **PAUSE/RESUME GAME** – Press 'P'
-
 #### OBJECTIVE
 - Destroy all invaders before they reach the bottom of the screen.
 - Earn points for each invader destroyed. Bonus points for shooting mystery ships.
