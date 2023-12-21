@@ -1,5 +1,5 @@
 plugins {
-    id("java")
+    id 'java'
     id 'info.solidsoft.pitest' version '1.15.0'
 }
 
@@ -25,7 +25,8 @@ tasks.test {
 }
 
 pitest {
-    pitestVersion = '1.15.0' //not needed when a default PIT version should be used
+    pitestVersion = '1.15.2'
+    junit5PluginVersion = '1.2.1' //not needed when a default PIT version should be used
     threads = 4
     timestampedReports = false
 }
