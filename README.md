@@ -24,7 +24,7 @@ Developed by Gonçalo Barroso (up202207832@fe.up.pt), Gonçalo Matias (up2021087
 #### TIPS
 - Move quickly and shoot accurately. Use cover wisely.
 
-![img_1.png](img_1.png)
+![img_1.png](docs/images/img_1.png)
 
 
 ### Screeshots
@@ -35,7 +35,7 @@ Developed by Gonçalo Barroso (up202207832@fe.up.pt), Gonçalo Matias (up2021087
 
 #### Menu
 
-![img_3.png](img_3.png)
+![img_3.png](docs/images/img_3.png)
 
 #### Features
 
@@ -49,5 +49,5 @@ Monster dead animation.
 
 ### Game end (Game Over)
 
-![img_2.png](img_2.png)
+![img_2.png](docs/images/img_2.png)
 
