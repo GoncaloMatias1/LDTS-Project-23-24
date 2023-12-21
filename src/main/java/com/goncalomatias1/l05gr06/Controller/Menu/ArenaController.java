@@ -5,6 +5,7 @@ import com.goncalomatias1.l05gr06.Controller.Controller;
 import com.goncalomatias1.l05gr06.GUI;
 import com.goncalomatias1.l05gr06.Model.Game.EnemyWave;
 import com.goncalomatias1.l05gr06.Model.Game.Entities.Enemy;
+import com.goncalomatias1.l05gr06.Model.Game.Entities.Shield;
 import com.goncalomatias1.l05gr06.Model.Menu.ArenaModel;
 import com.goncalomatias1.l05gr06.Model.Menu.GameOverModel;
 import com.goncalomatias1.l05gr06.States.Menu.GameOverState;
@@ -25,10 +26,12 @@ public class ArenaController extends Controller<ArenaModel> {
         steps = 76;
         hasToMoveDown = false;
         hasToMoveRight = true;
-        gameOverArea = getModel().getShields().get(0).getPosition().getY();
+
+        List<Shield> shields = getModel().getShields();
+        gameOverArea = shields.isEmpty() ? 0 : shields.get(0).getPosition().getY();
+
         shootCooldown = 0;
     }
-
     @Override
     public void step(Application application, GUI.ACTION action) {
         int time = 10;
@@ -51,7 +54,8 @@ public class ArenaController extends Controller<ArenaModel> {
             application.setState(new GameOverState(gameOverModel));
         }
         // Aliens reach shields
-        if (getModel().getEnemyWave().getEnemies().get(getModel().getEnemyWave().getEnemies().size() - 1).getPosition().getY() == gameOverArea) {
+        List<Enemy> enemies = getModel().getEnemyWave().getEnemies();
+        if (!enemies.isEmpty() && enemies.get(enemies.size() - 1).getPosition().getY() == gameOverArea) {
             GameOverModel gameOverModel = new GameOverModel();
             gameOverModel.setCurrentScore(getModel().getScore());
             application.setState(new GameOverState(gameOverModel));
@@ -108,4 +112,9 @@ public class ArenaController extends Controller<ArenaModel> {
             shootCooldown++;
         }
     }
+
+    public int getGameOverArea() {
+        return gameOverArea;
+    }
 }
+
