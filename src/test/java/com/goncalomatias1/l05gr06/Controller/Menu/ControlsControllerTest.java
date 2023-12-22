@@ -16,8 +16,8 @@ class ControlsControllerTest {
 
     @BeforeEach
     void setUp() {
-        controlsModel = new ControlsModel(); // Assuming a parameterless constructor
-        mockApplication = mock(Application.class); // Mock the Application class
+        controlsModel = new ControlsModel();
+        mockApplication = mock(Application.class);
         controlsController = new ControlsController(controlsModel);
     }
 
@@ -29,10 +29,9 @@ class ControlsControllerTest {
 
     @Test
     void step_OtherActions_DoNotChangeState() {
-        // Call the step method with other actions
         for (GUI.ACTION action : GUI.ACTION.values()) {
             if (action != GUI.ACTION.BACK) {
-                reset(mockApplication); // Reset the mock to clear previous interactions
+                reset(mockApplication);
                 controlsController.step(mockApplication, action);
                 verify(mockApplication, never()).setState(any());
             }

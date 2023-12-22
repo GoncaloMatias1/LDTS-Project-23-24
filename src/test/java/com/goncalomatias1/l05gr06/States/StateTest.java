@@ -33,7 +33,7 @@ class StateTest {
     void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        when(mockGui.getScreen()).thenReturn(mockScreen); // Return the mock Screen when getScreen is called
+        when(mockGui.getScreen()).thenReturn(mockScreen);
 
         testableState = new TestableState(new Object());
     }

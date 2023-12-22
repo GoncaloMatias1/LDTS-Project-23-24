@@ -74,10 +74,8 @@ class PlayerShipTest {
 
     @Test
     void shoot_ShouldCreateProjectileAtCorrectPosition() {
-        // Act
         var projectile = playerShip.shoot();
 
-        // Assert
         assertNotNull(projectile, "Shoot should create a new projectile");
         assertEquals(playerShip.getPosition().getX(), projectile.getPosition().getX(), "Projectile X should match player ship's X");
         assertEquals(playerShip.getPosition().getY() - 1, projectile.getPosition().getY(), "Projectile should be just above the player ship");

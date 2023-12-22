@@ -32,7 +32,7 @@ class ProjectileTest {
         MockitoAnnotations.openMocks(this);
         enemy = new Enemy(projectileStartX, projectileStartY, 3, 10);
         playerShip = new PlayerShip(screenWidth / 2, 20, screenWidth, initialLives);
-        projectile = new Projectile(projectileStartX, projectileStartY - 1); // Assuming projectile starts just above the player ship
+        projectile = new Projectile(projectileStartX, projectileStartY - 1);
     }
 
     @Test
@@ -50,9 +50,7 @@ class ProjectileTest {
 
     @Test
     void testProjectileEnemyCollision() {
-        // Arrange
         projectile = new Projectile(enemy.getPosition().getX(), enemy.getPosition().getY());
-        // Act & Assert
         assertTrue(projectile.checkCollision(enemy), "Projectile should collide with enemy at the same position");
     }
 

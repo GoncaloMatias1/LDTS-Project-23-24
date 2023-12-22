@@ -23,7 +23,6 @@ public class GUITest {
         gui = new GUI(mockScreen);
     }
 
-    // Test for ArrowUp
     @Test
     public void whenArrowUpPressed_thenActionUpReturned() throws IOException {
         KeyStroke keyStroke = new KeyStroke(KeyType.ArrowUp);
@@ -34,7 +33,6 @@ public class GUITest {
         assertEquals(GUI.ACTION.UP, action);
     }
 
-    // Test for ArrowDown
     @Test
     public void whenArrowDownPressed_thenActionDownReturned() throws IOException {
         KeyStroke keyStroke = new KeyStroke(KeyType.ArrowDown);
@@ -45,7 +43,6 @@ public class GUITest {
         assertEquals(GUI.ACTION.DOWN, action);
     }
 
-    // Test for ArrowLeft
     @Test
     public void whenArrowLeftPressed_thenActionLeftReturned() throws IOException {
         KeyStroke keyStroke = new KeyStroke(KeyType.ArrowLeft);
@@ -56,7 +53,6 @@ public class GUITest {
         assertEquals(GUI.ACTION.LEFT, action);
     }
 
-    // Test for ArrowRight
     @Test
     public void whenArrowRightPressed_thenActionRightReturned() throws IOException {
         KeyStroke keyStroke = new KeyStroke(KeyType.ArrowRight);
@@ -67,7 +63,6 @@ public class GUITest {
         assertEquals(GUI.ACTION.RIGHT, action);
     }
 
-    // Test for Enter key
     @Test
     public void whenEnterPressed_thenActionEnterReturned() throws IOException {
         KeyStroke keyStroke = new KeyStroke(KeyType.Enter);
@@ -78,7 +73,6 @@ public class GUITest {
         assertEquals(GUI.ACTION.ENTER, action);
     }
 
-    // Test for 'w' key
     @Test
     public void whenWPressed_thenActionUpReturned() throws IOException {
         KeyStroke keyStroke = new KeyStroke('w', false, false);
@@ -89,7 +83,6 @@ public class GUITest {
         assertEquals(GUI.ACTION.UP, action);
     }
 
-    // Test for 's' key
     @Test
     public void whenSPressed_thenActionDownReturned() throws IOException {
         KeyStroke keyStroke = new KeyStroke('s', false, false);
@@ -100,7 +93,6 @@ public class GUITest {
         assertEquals(GUI.ACTION.DOWN, action);
     }
 
-    // Test for 'a' key
     @Test
     public void whenAPressed_thenActionLeftReturned() throws IOException {
         KeyStroke keyStroke = new KeyStroke('a', false, false);
@@ -111,7 +103,6 @@ public class GUITest {
         assertEquals(GUI.ACTION.LEFT, action);
     }
 
-    // Test for 'd' key
     @Test
     public void whenDPressed_thenActionRightReturned() throws IOException {
         KeyStroke keyStroke = new KeyStroke('d', false, false);
@@ -122,7 +113,6 @@ public class GUITest {
         assertEquals(GUI.ACTION.RIGHT, action);
     }
 
-    // Test for Escape key
     @Test
     public void whenEscapePressed_thenActionBackReturned() throws IOException {
         KeyStroke keyStroke = new KeyStroke(KeyType.Escape);
@@ -133,7 +123,6 @@ public class GUITest {
         assertEquals(GUI.ACTION.BACK, action);
     }
 
-    // Test for no input
     @Test
     public void whenNoKeyPressed_thenActionNoneReturned() throws IOException {
         when(mockScreen.pollInput()).thenReturn(null);

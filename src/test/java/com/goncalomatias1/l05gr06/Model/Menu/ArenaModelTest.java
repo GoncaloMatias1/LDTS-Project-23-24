@@ -1,11 +1,7 @@
 package com.goncalomatias1.l05gr06.Model.Menu;
 
-import com.goncalomatias1.l05gr06.Model.Game.Projectile;
-import com.goncalomatias1.l05gr06.Position;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ArenaModelTest {
