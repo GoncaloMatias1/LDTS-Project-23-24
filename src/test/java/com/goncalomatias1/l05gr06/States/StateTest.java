@@ -40,19 +40,15 @@ class StateTest {
 
     @Test
     void step_ShouldInvokeControllerAndView() throws IOException {
-        // Configure the mock GUI to return ACTION.NONE
         when(mockGui.getAction()).thenReturn(GUI.ACTION.NONE);
 
-        // Call the step method
         testableState.step(mockApplication, mockGui);
 
-        // Verify that controller's step and view's draw methods are called
         verify(mockController).step(mockApplication, GUI.ACTION.NONE);
         verify(mockView).draw(mockGui);
-        verify(mockScreen).refresh(); // Now we verify that refresh is called on the mocked Screen
+        verify(mockScreen).refresh();
     }
 
-    // Define TestableState as an inner class
     private class TestableState extends State<Object> {
         public TestableState(Object model) {
             super(model);
