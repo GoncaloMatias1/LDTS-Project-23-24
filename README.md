@@ -2,6 +2,7 @@
 
 Developed by Gonçalo Barroso (up202207832@fe.up.pt), Gonçalo Matias (up202108703@fe.up.pt), and Rodrigo Arteiro (up202108749@fe.up.pt), this project is an engaging reimagining of the classic Space Invaders game. The player maneuvers a laser cannon across the screen's bottom, aiming and firing at overhead aliens. These aliens, arranged in five rows of eleven, shift left and right in unison, moving down each time they reach the screen's edge.
 
+![ezgif.com-video-to-gif-converted-2.gif](docs%2Fgifs%2Fezgif.com-video-to-gif-converted-2.gif)
 ### Controls:
 
 #### MOVEMENT
@@ -21,30 +22,29 @@ Developed by Gonçalo Barroso (up202207832@fe.up.pt), Gonçalo Matias (up2021087
 #### TIPS
 - Move quickly and shoot accurately. Use cover wisely.
 
-![img_1.png](docs/images/img_1.png)
 
 
-### Screeshots
 
-#### In Game
-
-
+### Showcase
 
 #### Menu
 
 ![img_3.png](docs/images/img_3.png)
 
-#### Features
+#### Enter Game
 
-Shield gets darker when hited.
+![ezgif.com-video-to-gif-converted.gif](docs%2Fgifs%2Fezgif.com-video-to-gif-converted.gif)
 
-![ezgif.com-video-to-gif-converted-3.gif](..%2F..%2F..%2FDownloads%2Fezgif.com-video-to-gif-converted-3.gif)
 
-Monster dead animation.
+#### Shields.
 
-![ezgif.com-video-to-gif-converted-4.gif](..%2F..%2F..%2FDownloads%2Fezgif.com-video-to-gif-converted-4.gif)
+![ezgif.com-video-to-gif-converted-3.gif](docs%2Fgifs%2Fezgif.com-video-to-gif-converted-3.gif)
 
-### Game end (Game Over)
+#### Normal ships and Mystery ships.
+
+![ezgif.com-video-to-gif-converted-4.gif](docs%2Fgifs%2Fezgif.com-video-to-gif-converted-4.gif)
+
+#### Game end (Game Over)
 
 ![img_2.png](docs/images/img_2.png)
 
