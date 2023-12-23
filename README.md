@@ -48,3 +48,6 @@ Developed by Gonçalo Barroso (up202207832@fe.up.pt), Gonçalo Matias (up2021087
 
 ![img_2.png](docs/images/img_2.png)
 
+#### Controls Menu
+
+![controls.png](docs%2Fimages%2Fcontrols.png)
