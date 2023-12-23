@@ -29,7 +29,6 @@ class GameOverTest {
 
     @Test
     public void testNavigateToStartAgain() {
-        // selectedItem is set to 0 "START AGAIN"
         while (model.getSelectedItem() != 0) {
             model.removeEntry();
         }
@@ -39,7 +38,6 @@ class GameOverTest {
 
     @Test
     public void testNavigateToQuit() {
-        // selectedItem is set to 1 "QUIT"
         while (model.getSelectedItem() != 1) {
             model.addEntry();
         }
@@ -49,7 +47,6 @@ class GameOverTest {
 
     @Test
     public void whenEnterPressedOnStartAgain_shouldTransitionToMainMenuState() {
-        // Simulate pressing 'UP' until the "START AGAIN" option is selected
         while (model.getSelectedItem() != 0) {
             controller.step(application, GUI.ACTION.UP);
         }
@@ -59,11 +56,10 @@ class GameOverTest {
 
     @Test
     public void whenEnterPressedOnQuit_shouldTerminateApplication() {
-        // Simulate pressing 'DOWN' until the "QUIT" option is selected
         while (model.getSelectedItem() != 1) {
             controller.step(application, GUI.ACTION.DOWN);
         }
         controller.step(application, GUI.ACTION.ENTER);
-        verify(application).setState(null); // The application should set its state to null before stopping
+        verify(application).setState(null);
     }
 }

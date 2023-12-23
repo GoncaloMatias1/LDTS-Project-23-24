@@ -29,7 +29,6 @@ class FileUtilityTest {
 
         assertTrue(Files.exists(FILE_PATH));
 
-        // Read the score back to verify it was written
         int readScore = Files.readAllLines(FILE_PATH).stream()
                 .mapToInt(Integer::parseInt)
                 .max()
@@ -40,16 +39,13 @@ class FileUtilityTest {
 
     @Test
     void testGetHighScoreWithNoFile() {
-        // Delete the file if it exists to simulate file not found
         assertDoesNotThrow(() -> Files.deleteIfExists(FILE_PATH));
 
-        // Capture System.err output to check for error message
         ByteArrayOutputStream errContent = new ByteArrayOutputStream();
         System.setErr(new PrintStream(errContent));
 
         int highScore = FileUtility.getHighScore();
 
-        // Restore System.err
         System.setErr(new PrintStream(new FileOutputStream(FileDescriptor.err)));
 
         assertEquals(0, highScore);
@@ -58,11 +54,9 @@ class FileUtilityTest {
 
     @Test
     void testGetHighScoreWithExistingFile() throws IOException {
-        // Prepare a file with some scores
         List<String> scores = List.of("10", "20", "30", "40", "50");
         Files.write(FILE_PATH, scores);
 
-        // Get the high score
         int highScore = FileUtility.getHighScore();
 
         assertEquals(50, highScore);

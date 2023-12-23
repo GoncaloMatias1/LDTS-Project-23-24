@@ -10,7 +10,6 @@ class EntityViewTest {
 
     @Test
     void draw_callsDrawWithMockedGraphics() {
-        // Arrange
         EntityModel mockModel = mock(EntityModel.class);
         TextGraphics mockGraphics = mock(TextGraphics.class);
 
@@ -21,10 +20,8 @@ class EntityViewTest {
             }
         };
 
-        // Act
         entityView.draw(mockGraphics);
 
-        // Assert
         verify(mockGraphics).putString(0, 0, "Test");
     }
 }

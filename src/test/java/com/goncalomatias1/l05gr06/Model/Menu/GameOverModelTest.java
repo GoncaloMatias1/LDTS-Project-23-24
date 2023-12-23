@@ -41,6 +41,4 @@ class GameOverModelTest {
         assertEquals(0, gameOverModel.getSelectedItem());
     }
 
-    // Mocking or using a test file will be required to test setCurrentScore, getCurrentScore, and getHighScore
-    // as these involve file I/O operations.
 }

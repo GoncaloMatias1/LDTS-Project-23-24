@@ -104,10 +104,8 @@ class EnemyTest {
 
     @Test
     void isAlive_ReturnsFalseWhenLivesAreNegative() {
-        // Arrange: Set lives to a negative value
         enemy.setLives(-1);
 
-        // Assert: isAlive should return false
         assertFalse(enemy.isAlive());
     }
 

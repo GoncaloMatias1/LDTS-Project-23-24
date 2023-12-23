@@ -37,7 +37,6 @@ class ViewTest {
 
     @Test
     public void draw_shouldInvokeGuiMethods() {
-        // Arrange
         GUI mockGui = mock(GUI.class);
         View<Object> viewWithMockedMethod = new View<>(new Object()) {
             @Override
@@ -46,11 +45,8 @@ class ViewTest {
             }
         };
 
-        // Act
         viewWithMockedMethod.draw(mockGui);
 
-        // Assert
-        verify(mockGui).getScreen(); // Verifying that getScreen() was indeed called
-        // Add verifications for other interactions if needed
+        verify(mockGui).getScreen();
     }
 }

@@ -23,8 +23,8 @@ class MainMenuControllerTest {
         mainMenuController = new MainMenuController(mockMainMenuModel);
 
         when(mockApplication.getGui()).thenReturn(mockGUI);
-        when(mockGUI.getWidth()).thenReturn(100); // Example width
-        when(mockGUI.getHeight()).thenReturn(100); // Example height
+        when(mockGUI.getWidth()).thenReturn(100);
+        when(mockGUI.getHeight()).thenReturn(100);
     }
 
     @Test
@@ -60,5 +60,4 @@ class MainMenuControllerTest {
         verify(mockApplication).setState(null);
     }
 
-    // Additional tests for other cases...
 }

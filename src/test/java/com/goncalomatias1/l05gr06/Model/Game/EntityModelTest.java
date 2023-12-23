@@ -12,7 +12,6 @@ class EntityModelTest {
     @BeforeEach
     void setUp() {
         entityModel = new EntityModel(startPosition, 3, true) {
-            // This is an anonymous subclass of the abstract EntityModel class
         };
         entityModel.minX = 0;
         entityModel.maxX = 10;
