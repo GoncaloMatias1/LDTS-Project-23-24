@@ -64,34 +64,11 @@ The use of the State Pattern allows the following benefits:
 - It’s easier to add future possible States.
 - There will be less repeated code.
 
-#### Entities
-
-##### Problem in Context
-
-Different Entities in-game have very similar methods related to all of them. We had to use a way to avoid using too much repeating code and having to only write these common equal methods once.
-
-##### The Pattern
-
-We have applied the **Factory** pattern. Like this, every subclass that uses equal code doesn’t need to reimplement it and can simply be a subclass that implements only what's different.
-
-##### Implementation
-
-Currently, we aim to make the subclasses Monster, PlayerShip, and Bullet of Entity.
-
-##### Consequences
-
-The use of the Factory Method allows the following benefits:
-
-- It’s easier to add future possible subclasses.
-- There will be less repeated code overall.
-
 ## Testing
 
 ### Coverage report
 
-
 ### Link to report
-
 
 ## Self-evaluation
 
