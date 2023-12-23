@@ -28,7 +28,7 @@ Developed by Gonçalo Barroso (up202207832@fe.up.pt), Gonçalo Matias (up2021087
 
 #### In Game
 
-![ezgif.com-video-to-gif-converted-2.gif](..%2F..%2F..%2FDownloads%2Fezgif.com-video-to-gif-converted-2.gif)
+
 
 #### Menu
 
